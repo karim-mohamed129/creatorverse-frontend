@@ -1,0 +1,3651 @@
+/* =====================================================
+   BASE CARD
+   ===================================================== */
+.manga-card {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  background: transparent;
+  transition: transform 0.4s ease;
+}
+
+.manga-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.manga-cover-wrap {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  
+}
+.row-2 .manga-cover-wrap,
+.row-3 .manga-cover-wrap,
+.row-4 .manga-cover-wrap {
+  
+}
+
+.row-2 .manga-cover,
+.row-3 .manga-cover,
+.row-4 .manga-cover {
+  
+}
+.manga-cover-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 0px;
+  border-radius: 10px;
+}
+
+.manga-cover-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  
+  transform: translateX(-120%) rotate(8deg);
+  transition: transform 1.15s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.manga-card:hover .manga-cover-wrap::after {
+  transform: translateX(120%) rotate(8deg);
+}
+
+.manga-card:hover .manga-cover-wrap {
+  box-shadow:
+    0 0 22px 0 rgba(168, 69, 139, 0.95),
+    0 0 10px 0 rgba(27, 198, 189, 0.28);
+}
+
+.manga-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  transition: transform 0.6s ease, filter 0.45s ease;
+}
+
+.manga-card:hover .manga-cover {
+  transform: scale(1.05);
+  filter: brightness(1.05) saturate(1.05);
+}
+
+/* =====================================================
+   VARIANTS
+   ===================================================== */
+.manga-card.variant-featured .manga-cover-wrap {
+  height: 488px;
+}
+
+.manga-card.variant-featured .manga-meta {
+  display: none !important;
+}
+
+.manga-card.variant-standard .manga-cover-wrap {
+  height: 406px;
+}
+
+.manga-card.variant-standard .manga-meta {
+  padding: 10px 2px 0;
+}
+
+.manga-card.variant-standard .manga-title {
+  font-style: italic;
+}
+
+.manga-card.variant-standard .manga-type {
+  display: inline-block;
+  color: #39ffd2;
+}
+
+.manga-card.variant-standard:hover {
+  transform: translateY(-6px);
+}
+
+.manga-card.variant-chapter .manga-cover-wrap {
+  height: 406px;
+}
+
+.manga-card.variant-chapter .manga-meta {
+  padding: 8px 2px 0;
+}
+
+.manga-card.variant-episode {
+  display: block;
+  width: 265px;
+}
+
+.manga-card.variant-episode:hover {
+  transform: translateY(-4px);
+}
+
+.manga-card.variant-episode .manga-cover-wrap {
+  min-height: 437px;
+  padding: 2px 2px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 5px;
+  background: #070707;
+}
+
+.manga-card.variant-episode .manga-cover-wrap::before {
+  border-radius: 5px;
+}
+
+.manga-card.variant-episode .manga-cover-wrap::after {
+  display: none;
+}
+
+.manga-card.variant-episode .manga-cover {
+  width: 261px;
+  height: 342px;
+  border-radius: 3px;
+  transform: none !important;
+  filter: none !important;
+}
+
+.manga-card.variant-episode .manga-fav {
+  top: 11px;
+  right: 11px;
+  width: 30px;
+  height: 30px;
+  background: rgba(29, 29, 29, 0.92);
+}
+
+.episode-variant-caption {
+    padding: 46px 10px 5px 33px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+      position: relative;
+       top: -110px;
+    left: -18px;
+    zoom: 0.9;
+    padding-top:15px;
+        padding-bottom:10px;
+
+}
+.episode-row-variant-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 39px;
+  max-width: 8ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.408px;
+  max-width: 8ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} 
+
+ 
+ 
+.episode-variant-chapter {
+  color: #cb4699;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.episode-variant-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.episode-variant-date {
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.episode-variant-stats,
+.episode-row-variant-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.episode-variant-stats .stat-item,
+.episode-row-variant-stats .stat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 23px;
+  white-space: nowrap;
+}
+
+.episode-variant-stats .stat-item img,
+.episode-row-variant-stats .stat-item img {
+  width: 26px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.manga-card.variant-episodeRow {
+  display: grid;
+  grid-template-columns: 161px minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+  min-height: 160px;
+  padding: 2px 16px 2px 2px;
+  border-radius: 5px;
+      background-size: contain;
+      background-repeat:no-repeat;
+  }
+
+.manga-card.variant-episodeRow:hover {
+  transform: translateY(-2px);
+}
+
+.manga-card.variant-episodeRow .manga-cover-wrap {
+  width: 161px;
+  height: 156px;
+  border-radius: 3px;
+}
+
+.manga-card.variant-episodeRow .manga-cover-wrap::before {
+  border-radius: 3px;
+}
+
+.manga-card.variant-episodeRow .manga-cover-wrap::after {
+  display: none;
+}
+
+.manga-card.variant-episodeRow .manga-cover {
+  border-radius: 3px;
+  transform: none !important;
+  filter: none !important;
+}
+
+.manga-card.variant-episodeRow .manga-fav {
+  top: auto;
+  right: -13px;
+  bottom: 9px;
+  width: 30px;
+  height: 30px;
+  background: rgba(29, 29, 29, 0.92);
+}
+
+.episode-row-variant-copy {
+  min-width: 0;
+  align-self: stretch;
+  padding: 24px 0 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.episode-row-variant-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+.episode-row-variant-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 39px;
+  max-width: 8ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.408px;
+}
+
+  
+.episode-row-variant-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 39px;
+  max-width: 8ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.episode-row-variant-chapter {
+  margin-top: 12px;
+  color: #cb4699;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.episode-row-variant-stats {
+  align-self: end;
+  margin: 0 12px 20px 0;
+  gap: 20px;
+}
+
+.manga-card.variant-favouritesChapter {
+  display: block;
+}
+
+.manga-card.variant-favouritesChapter .manga-cover-wrap {
+  height: 527px;
+  padding: 12px 12px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #070707;
+}
+
+.manga-card.variant-favouritesChapter .manga-fav {
+  display: none;
+}
+
+.favourites-chapter-image-shell {
+  flex: 0 0 416px;
+  height: 416px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.favourites-chapter-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.favourites-chapter-caption {
+  flex: 0 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+    padding: 0px 2px 21px;
+    }
+
+.favourites-chapter-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1;
+  text-transform: none;
+}
+
+.favourites-chapter-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.favourites-chapter-date {
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.favourites-chapter-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.favourites-chapter-stats .stat-item {
+  gap: 4px;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.favourites-chapter-stats .stat-item img {
+  width: 22px;
+  height: 18px;
+}
+
+.manga-card.variant-compactOverlay {
+  display: block;
+}
+
+.manga-card.variant-compactOverlay .manga-cover-wrap {
+  height: 372px !important;
+}
+
+.manga-card.variant-compactOverlay .manga-meta {
+  display: none;
+}
+
+.manga-card.variant-compactOverlay .manga-cover-wrap .manga-title,
+.manga-card.variant-compactOverlay .manga-cover-wrap .manga-type {
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  overflow: hidden;
+}
+
+/* =====================================================
+   CATEGORY VARIANT - DESKTOP
+   ===================================================== */
+.manga-card.variant-category {
+  background: transparent;
+  transition: transform 0.28s ease;
+}
+
+.manga-card.variant-category:hover {
+  transform: translateY(-4px);
+}
+
+.manga-card.variant-category .manga-cover-wrap {
+  max-height: 425px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #111111;
+  border: 2px solid #d54ca8;
+  box-shadow:
+    0 0 6px rgba(255, 96, 200, 0.95),
+    0 0 12px rgba(255, 96, 200, 0.5);
+}
+
+.manga-card.variant-category .manga-cover-wrap::before {
+  display: none;
+}
+
+.manga-card.variant-category .manga-cover-wrap::after {
+  display: none;
+}
+
+.manga-card.variant-category .manga-cover {
+  border-radius: 0;
+}
+
+.manga-card.variant-category .manga-fav {
+  top: 8px;
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  background: #1d1d1d;
+}
+
+.manga-card.variant-category .manga-fav img {
+  width: 18px;
+  height: 18px;
+}
+
+.manga-card.variant-category .manga-meta-overlay {
+  position: absolute;
+  left: 0;
+  right: auto;
+  bottom: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 56px;
+  width: 90%;
+  padding: 0;
+  pointer-events: none;
+}
+
+.manga-card.variant-category .manga-meta-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: rgba(29, 29, 29, 0.5);
+  clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 6px 18px rgba(0, 0, 0, 0.34);
+  z-index: 0;
+}
+
+.manga-card.variant-category .stats-overlay-shaped {
+  position: absolute;
+left: clamp(10px, 2vw, 22px);  bottom: 12px;
+  right: auto;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  width: auto;
+  max-width: none;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.manga-card.variant-category .stats-overlay-shaped .stat-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 100%;
+  white-space: nowrap;
+}
+
+.manga-card.variant-category .stats-overlay-shaped .stat-item img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+.manga-meta-category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 7px;
+  padding-top: 10px;
+  position: relative;
+}
+
+.manga-card.variant-category .manga-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.manga-creator {
+  display: block;
+  margin: 0;
+  color: #cf4aa4;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: left;
+  align-self: flex-start;
+}
+
+/* =====================================================
+   FAVORITE
+   ===================================================== */
+.manga-fav {
+  position: absolute;
+  top: clamp(6px, 1vw, 14px);
+  right: clamp(6px, 1vw, 14px);
+  z-index: 5;
+  width: clamp(26px, 3vw, 42px);
+  height: clamp(26px, 3vw, 42px);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: rgba(0, 0, 0, 0.45);
+  color: #f6f6f6;
+  font-size: clamp(12px, 1.4vw, 20px);
+  line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.manga-fav img {
+  width: clamp(12px, 1.4vw, 20px);
+  height: clamp(12px, 1.4vw, 20px);
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.manga-card.variant-standard .manga-fav,
+.manga-card.variant-compactOverlay .manga-fav,
+.manga-card.variant-chapter .manga-fav {
+  background: #1d1d1d;
+}
+
+.manga-fav:hover {
+  background: rgba(240, 91, 200, 0.22);
+  box-shadow: 0 0 clamp(6px, 1vw, 12px) rgba(240, 91, 200, 0.6);
+}
+
+/* =====================================================
+   STATS
+   ===================================================== */
+.stats-overlay {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #1d1d1d;
+  color: #f3f3f3;
+  font-size: 0.68rem;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.stat-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.stat-item img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   META / TITLE
+   ===================================================== */
+.manga-meta {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 4px 0;
+}
+
+.manga-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  transition: text-shadow 0.25s ease;
+}
+
+.manga-card:hover .manga-title {
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.2);
+}
+
+.manga-type {
+  color: #39ffd2;
+  font-size: 0.72rem;
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: text-shadow 0.25s ease;
+}
+
+.manga-card:hover .manga-type {
+  text-shadow: 0 0 12px rgba(57, 255, 210, 0.35);
+}
+
+.manga-card.variant-standard .manga-title,
+.manga-card.variant-standard .manga-type {
+  transition: none;
+}
+
+.manga-card.variant-standard:hover .manga-title,
+.manga-card.variant-standard:hover .manga-type {
+  text-shadow: none;
+}
+
+/* =====================================================
+   OVERLAY META
+   ===================================================== */
+.manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay {
+  position: absolute;
+  left: 0;
+  right: auto;
+  bottom: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 56px;
+  width: 90%;
+  padding: 0;
+  pointer-events: none;
+}
+
+.manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: rgba(29, 29, 29, 0.6);
+  clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 6px 18px rgba(0, 0, 0, 0.34);
+  z-index: 0;
+}
+
+.manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
+.manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped {
+  position: absolute;
+  left: 12px;
+  bottom: 24px;
+  right: auto;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  width: auto;
+  max-width: none;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+/* =====================================================
+   CHAPTER OVERLAY
+   ===================================================== */
+.chapter-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 56px;
+  width: 80%;
+  padding: 0 0 0 10px;
+  pointer-events: none;
+}
+
+.chapter-meta-top {
+  margin-bottom: 2px;
+  line-height: 1;
+}
+
+.chapter-date {
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.chapter-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(29, 29, 29, 0.5);
+  clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 6px 18px rgba(0, 0, 0, 0.34);
+  z-index: 0;
+}
+
+.chapter-overlay .dropped-bottom-row {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 8px;
+}
+
+.chapter-tag2 {
+  font-family: "Neotoxic", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.chapter-tag3 {
+  display: flex;
+  align-items: center;
+}
+
+.chapter-tag3 .read-more-btn {
+  background: none;
+  border: none;
+  font-family: "Neotoxic", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1;
+  color: #ffffff;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  pointer-events: auto;
+}
+
+.chapter-tag3 .read-more-btn:hover {
+  opacity: 0.85;
+}
+
+.manga-card-dropped .dropped-overlay {
+  display: none;
+}
+
+.manga-card-dropped .manga-cover-wrap {
+  border-radius: 12px;
+}
+
+.dropped-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 10px 8px 8px;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 10, 0) 0%,
+    rgba(10, 10, 10, 0.45) 30%,
+    rgba(10, 10, 10, 0.95) 100%
+  );
+}
+
+.dropped-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.chapter-tag {
+  min-width: 62px;
+  padding: 5px 8px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 900;
+  line-height: 1;
+  border-radius: 4px;
+  transition: all 0.25s ease;
+}
+
+.read-more-btn {
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-style: italic;
+  font-weight: 700;
+  padding: 0;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.read-more-btn:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+}
+
+/* =====================================================
+   FEATURED UI
+   ===================================================== */
+.row-1-top-label {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  z-index: 6;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.manga-card.variant-featured .manga-fav {
+  background: rgba(17, 17, 17, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.row-1-bottom-ui {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+}
+
+.row-1-next-btn {
+  position: absolute;
+  left: 0;
+  bottom: 44px;
+  min-width: 126px;
+  height: 34px;
+  border: 0;
+  background: #cf3ca4;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1;
+  text-transform: uppercase;
+  padding: 0 18px;
+}
+
+.row-1-meta-bar {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 12px 10px;
+}
+
+.row-1-meta-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 60%;
+  background: rgba(29, 29, 29, 0.7);
+  clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: inset 0 0 0 1px #ffffff0a, 0 6px 18px #00000057;
+  z-index: 0;
+}
+
+.row-1-meta-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  z-index: 1;
+  margin-left: 13px;
+}
+
+.row-1-meta-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
+.row-1-meta-date {
+  color: #ffffff;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1;
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.date-suffix {
+  font-size: 8px;
+  line-height: 1;
+  position: relative;
+  top: -6px;
+}
+
+/* =====================================================
+   CLEANUP
+   ===================================================== */
+.manga-col,
+.manga-col::before,
+.manga-col::after {
+  box-shadow: none !important;
+}
+
+/* =====================================================
+   RTL
+   ===================================================== */
+[dir="rtl"] .manga-meta {
+}
+
+[dir="rtl"] .chapter-overlay .dropped-bottom-row {
+  direction: rtl;
+}
+
+[dir="rtl"] .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay {
+  left: auto;
+  right: 0;
+  direction: rtl;
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay::before {
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+[dir="rtl"] .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped {
+  left: auto;
+  right: 22px;
+}
+
+[dir="rtl"] .manga-card.variant-category .manga-meta-overlay {
+  left: auto;
+  right: 0;
+  direction: rtl;
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .manga-card.variant-category .manga-meta-overlay::before {
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+[dir="rtl"] .manga-card.variant-category .stats-overlay-shaped {
+  left: auto;
+  right: 10px;
+}
+[dir="rtl"] .row-1-meta-bar {
+  flex-direction: row-reverse !important;
+  justify-content: flex-start !important;
+}
+
+[dir="rtl"] .row-1-meta-bar::before {
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
+  width: 60%;
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .row-1-meta-right {
+  margin-left: 0 !important;
+  margin-right: 13px !important;
+}
+
+[dir="rtl"] .row-1-next-btn {
+  left: auto;
+  right: 0;
+}
+
+
+/* =====================================================
+   DESKTOP HEIGHT CAPS
+   ===================================================== */
+@media (min-width: 992px) {
+  .manga-card.variant-featured .manga-cover-wrap {
+    max-height: 488px;
+  }
+
+  .manga-card.variant-standard .manga-cover-wrap,
+  .manga-card.variant-chapter .manga-cover-wrap {
+    height: 372px;
+  }
+
+  .manga-card.variant-compactOverlay .manga-cover-wrap {
+    max-height: 372px !important;
+  }
+
+  .manga-card.variant-favouritesChapter .manga-cover-wrap {
+    max-height: 527px;
+  }
+
+  .manga-card.variant-category .manga-cover-wrap {
+   height: 372px;
+  }
+
+  .manga-card.variant-episode {
+    max-height: 468px;
+  }
+
+  .manga-card.variant-episode .manga-cover-wrap {
+    max-height: 437px;
+  }
+
+  .manga-card.variant-episodeRow {
+    max-height: 160px;
+  }
+
+  .manga-card.variant-episodeRow .manga-cover-wrap {
+    max-height: 156px;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 991px) {
+  .row-1 .manga-card.variant-featured .manga-cover-wrap {
+    height: 321px;
+        aspect-ratio: 0.7 / 1;
+
+  }
+
+  .row-2 .manga-card.variant-standard .manga-cover-wrap,
+  .row-2 .manga-card.variant-chapter .manga-cover-wrap,
+  .row-2 .manga-card.variant-favouritesChapter .manga-cover-wrap,
+  .row-2 .manga-card.variant-category .manga-cover-wrap {
+    height: 163px !important;
+    aspect-ratio: 0.7 / 1;
+  }
+
+  .row-3 .manga-card.variant-standard .manga-cover-wrap,
+  .row-3 .manga-card.variant-chapter .manga-cover-wrap,
+  .row-3 .manga-card.variant-favouritesChapter .manga-cover-wrap,
+  .row-3 .manga-card.variant-category .manga-cover-wrap {
+    height: 181px !important;
+    aspect-ratio: 0.7 / 1;
+  }
+
+  .row-4 .manga-card.variant-compactOverlay .manga-cover-wrap {
+    height: 165px !important;
+    aspect-ratio: 0.74 / 1;
+    width: 100%;
+    max-width: none;
+  }
+
+  .manga-meta {
+    gap: 4px;
+    padding: 6px 2px 0;
+    align-items: flex-start;
+  }
+
+  .manga-title {
+    font-size: 0.68rem;
+    line-height: 1.05;
+  }
+
+  .manga-type {
+    font-size: 0.5rem;
+    line-height: 1;
+    white-space: nowrap;
+    position: static;
+  }
+
+  .stats-overlay {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    gap: 6px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stat-item {
+    gap: 2px;
+    font-size: 8px;
+    line-height: 1;
+    min-width: 0;
+  }
+
+  .stat-item img {
+    width: 9px;
+    height: 9px;
+  }
+
+  .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay {
+    width: 100%;
+    min-height: 15px;
+  }
+
+  .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay::before {
+    clip-path: none !important;
+    width: 100% !important;
+  }
+
+  .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped {
+    left: 9px;
+    right: auto;
+    bottom: 3px;
+    gap: 8px;
+    width: auto;
+    max-width: calc(100% - 18px);
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item {
+    gap: 3px;
+    font-size: 9px;
+    line-height: 1;
+  }
+
+  .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item img {
+    width: 10px;
+    height: 10px;
+  }
+
+  .chapter-overlay {
+    width: 90%;
+    min-height: 34px;
+  }
+
+  .manga-card.variant-favouritesChapter .manga-cover-wrap {
+    height: 340px;
+    padding: 8px 8px 0;
+  }
+
+  .favourites-chapter-image-shell {
+    flex-basis: 270px;
+    height: 270px;
+  }
+
+  .favourites-chapter-caption {
+    padding: 8px 0 10px;
+    gap: 6px;
+  }
+
+  .favourites-chapter-title {
+    font-size: 16px;
+  }
+
+  .favourites-chapter-date,
+  .favourites-chapter-stats .stat-item {
+    font-size: 10px;
+  }
+
+  .favourites-chapter-stats {
+    gap: 8px;
+  }
+
+  .favourites-chapter-stats .stat-item img {
+    width: 14px;
+    height: 12px;
+  }
+
+  .chapter-overlay .dropped-bottom-row {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .chapter-tag2,
+  .chapter-tag3,
+  .chapter-tag3 .read-more-btn {
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .manga-card-row-1-mobile .row-1-top-label {
+    top: 8px;
+    left: 8px;
+    font-size: 0.64rem;
+  }
+
+  .manga-card-row-1-mobile .row-1-next-btn {
+    min-width: 74px;
+    height: 15px;
+    font-size: 0.54rem;
+    bottom: 32px;
+    padding: 0 !important;
+  }
+
+  .manga-card-row-1-mobile .row-1-meta-bar {
+    min-height: 32px;
+  }
+
+  .manga-card-row-1-mobile .row-1-meta-icon {
+    width: 11px;
+    height: 11px;
+  }
+
+  .row-1-meta-bar::before {
+    width: 80% !important;
+  }
+
+  .manga-card-row-1-mobile .row-1-meta-date {
+    font-size: 0.78rem;
+  }
+
+  .date-suffix {
+    font-size: 8px;
+    top: -6px;
+  }
+
+  [dir="rtl"] .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped {
+    left: auto;
+    right: 9px;
+  }
+
+  .row-3 .see-more-btn,
+  .row-4 .see-more-btn,
+  .row-3 .manga-type {
+    display: none !important;
+  }
+
+  .row-3 {
+    padding-top: 10px !important;
+  }
+
+  .row-1 .manga-cover-wrap,
+  .row-5 .manga-cover-wrap {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .row-1 .manga-cover-wrap::before,
+  .row-5 .manga-cover-wrap::before,
+  .row-1 .manga-cover-wrap::after,
+  .row-5 .manga-cover-wrap::after {
+    display: none !important;
+  }
+
+  /* category = same mobile look as standard */
+  .manga-card.variant-category .manga-cover-wrap {
+    border: none !important;
+    box-shadow:
+      0 0 18.75px 0 #a8458bbf,
+      0 0 8px 0 rgba(203, 70, 153, 0.45) !important;
+    border-radius: 10px;
+    background: #111;
+  }
+
+  .manga-card.variant-category .manga-cover-wrap::before,
+  .manga-card.variant-category .manga-cover-wrap::after {
+    display: block !important;
+  }
+
+  .manga-card.variant-category .manga-cover {
+    border-radius: 10px;
+  }
+
+  .manga-card.variant-category .manga-fav {
+    background: #1d1d1d;
+  }
+
+  .manga-card.variant-category .manga-meta-category {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 6px 2px 0;
+    position: relative;
+  }
+
+  .manga-card.variant-category .manga-creator {
+    display: block;
+    margin: 0;
+    font-size: 0.5rem;
+    line-height: 1;
+    white-space: nowrap;
+    position: static;
+  }
+
+  .manga-card.variant-category .manga-title {
+    margin: 0;
+    font-size: 0.68rem;
+    line-height: 1.05;
+  }
+
+  .manga-card.variant-category .manga-meta-overlay {
+    width: 100%;
+    min-height: 15px;
+  }
+
+  .manga-card.variant-category .manga-meta-overlay::before {
+    clip-path: none !important;
+    width: 100% !important;
+  }
+
+  .manga-card.variant-category .stats-overlay-shaped {
+    left: 9px;
+    right: auto;
+    bottom: 3px;
+    gap: 8px;
+    width: auto;
+    max-width: calc(100% - 18px);
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .manga-card.variant-category .stats-overlay-shaped .stat-item {
+    gap: 3px;
+    font-size: 9px;
+    line-height: 1;
+  }
+
+  .manga-card.variant-category .stats-overlay-shaped .stat-item img {
+    width: 10px;
+    height: 10px;
+  }
+
+  [dir="rtl"] .manga-card.variant-category .stats-overlay-shaped {
+    left: auto;
+    right: 9px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .row-1 .manga-card.variant-featured .manga-cover-wrap {
+    height: 488px;
+  }
+
+  .row-2 .manga-card.variant-standard .manga-cover-wrap,
+  .row-2 .manga-card.variant-chapter .manga-cover-wrap,
+  .row-2 .manga-card.variant-category .manga-cover-wrap,
+  .row-3 .manga-card.variant-standard .manga-cover-wrap,
+  .row-3 .manga-card.variant-chapter .manga-cover-wrap,
+  .row-3 .manga-card.variant-category .manga-cover-wrap,
+  .row-4 .manga-card.variant-compactOverlay .manga-cover-wrap {
+    height: auto !important;
+  }
+}
+
+/* =====================================================
+   IPAD CARD
+   ===================================================== */
+@media (min-width: 577px) and (max-width: 991px) {
+  .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay::before {
+    width: 70% !important;
+    clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%) !important;
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 0;
+    background: #1d1d1d80;
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px #ffffff0a, 0 6px 18px #00000057 !important;
+  }
+
+  .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    max-width: calc(100% - 18px);
+    bottom: 12px;
+    left: 9px;
+    right: auto;
+  }
+
+  .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay {
+    width: 100%;
+    min-height: 37px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .manga-card.variant-episode {
+    width: 100%;
+  }
+  .manga-card.variant-episode .manga-cover-wrap {
+    min-height: auto;
+    padding: 2px 2px 12px;
+  }
+
+  .manga-card.variant-episode .manga-cover {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 263 / 372;
+  }
+
+  .episode-variant-caption {
+    position: static;
+    top: auto;
+    left: auto;
+    zoom: 1;
+    padding: 12px 12px 0;
+    gap: 5px;
+  }
+
+  .episode-variant-title,
+  .episode-row-variant-title {
+    max-width: 9ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: auto;
+    display: inline-block;
+  }
+  .episode-variant-chapter {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .episode-variant-meta {
+    gap: 8px;
+  }
+
+  .episode-variant-date {
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .episode-variant-stats {
+    gap: 10px;
+  }
+
+  .episode-variant-stats .stat-item {
+    gap: 3px;
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .episode-variant-stats .stat-item img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .manga-card.variant-episodeRow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    min-height: auto;
+    padding: 2px;
+  }
+
+  .manga-card.variant-episodeRow .manga-cover-wrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 161 / 156;
+  }
+
+  .manga-card.variant-episodeRow .manga-cover {
+    width: 100%;
+    height: 100%;
+  }
+
+  .manga-card.variant-episodeRow .manga-fav {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .episode-row-variant-copy {
+    padding: 0 14px;
+  }
+
+  .episode-row-variant-head {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .episode-row-variant-title {
+    font-size: 20px;
+    line-height: 1.08;
+  }
+
+  .episode-row-variant-date {
+    font-size: 11px;
+    line-height: 1;
+    text-align: left;
+  }
+
+  .episode-row-variant-chapter {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .episode-row-variant-stats {
+    margin: 0 14px 14px;
+    align-self: start;
+    gap: 12px;
+  }
+
+  .episode-row-variant-stats .stat-item {
+    gap: 3px;
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .episode-row-variant-stats .stat-item img {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 620px) {
+  .episode-variant-caption {
+    padding: 10px 10px 0;
+  }
+
+  .episode-variant-title,
+  .episode-row-variant-title {
+    font-size: 16px;
+  }
+
+  .episode-variant-stats,
+  .episode-row-variant-stats {
+    gap: 8px;
+  }
+}
+.category-inner-episodes-list .manga-card.variant-episodeRow .manga-cover {
+  border-radius: 3px;
+  transform: scale(1.4) !important;
+  filter: none !important;
+}
+.category-inner-episodes-grid .variant-episode
+{
+    max-height: 468px!important;
+}
+
+/* =====================================================
+   INDEX PAGE RESPONSIVE CARD FIX
+   Desktop target at 1632 Figma:
+   row-1 max 488px
+   row-2 max 406px
+   row-3 max 406px
+   row-4 max 372px
+
+   Important:
+   - SliderSection.css keeps the column counts.
+   - .manga-col owns the slide width.
+   - .manga-card fills/scales inside that slide.
+   - Mobile slider columns are not changed.
+   ===================================================== */
+.row-1 {
+  --index-card-max-w: 305px;
+  --index-cover-max-h: 488px;
+}
+
+.row-2,
+.row-3 {
+  --index-card-max-w: 238px;
+  --index-cover-max-h: 372px;
+}
+
+.row-4 {
+  --index-card-max-w: 238px;
+  --index-cover-max-h: 372px;
+}
+
+/* Keep the slide width from SliderSection.css, then center the visual card. */
+.row-1 .manga-col > .manga-card,
+.row-2 .manga-col > .manga-card,
+.row-3 .manga-col > .manga-card,
+.row-4 .manga-col > .manga-card {
+  width: min(100%, var(--index-card-max-w)) !important;
+  max-width: var(--index-card-max-w) !important;
+  min-width: 0 !important;
+  margin-inline: auto;
+}
+
+/* Responsive cover height: calculated from card width, capped at desktop Figma height. */
+.row-1 .manga-col > .manga-card.variant-featured .manga-cover-wrap,
+.row-2 .manga-col > .manga-card.variant-standard .manga-cover-wrap,
+.row-2 .manga-col > .manga-card.variant-chapter .manga-cover-wrap,
+.row-2 .manga-col > .manga-card.variant-category .manga-cover-wrap,
+.row-2 .manga-col > .manga-card.variant-favouritesChapter .manga-cover-wrap,
+.row-3 .manga-col > .manga-card.variant-standard .manga-cover-wrap,
+.row-3 .manga-col > .manga-card.variant-chapter .manga-cover-wrap,
+.row-3 .manga-col > .manga-card.variant-category .manga-cover-wrap,
+.row-3 .manga-col > .manga-card.variant-favouritesChapter .manga-cover-wrap,
+.row-4 .manga-col > .manga-card.variant-compactOverlay .manga-cover-wrap {
+  height: var(--index-cover-max-h)!important;
+}
+
+.row-1 .manga-col > .manga-card .manga-cover,
+.row-2 .manga-col > .manga-card .manga-cover,
+.row-3 .manga-col > .manga-card .manga-cover,
+.row-4 .manga-col > .manga-card .manga-cover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+/* Tablet/mobile: keep the existing slider columns from SliderSection.css. */
+@media (max-width: 991px) {
+  .row-1 {
+    --index-card-max-w: 100%;
+    --index-cover-max-h: none;
+  }
+
+  .row-2,
+  .row-3 {
+    --index-card-max-w: 100%;
+    --index-cover-max-h: none;
+  }
+
+  .row-4 {
+    --index-card-max-w: 100%;
+    --index-cover-max-h: none;
+  }
+
+  .row-1 .manga-col > .manga-card,
+  .row-2 .manga-col > .manga-card,
+  .row-3 .manga-col > .manga-card,
+  .row-4 .manga-col > .manga-card {
+    width: 100% !important;
+    max-width: none !important;
+    margin-inline: 0;
+    justify-self: auto;
+  }
+
+  .row-1 .manga-col > .manga-card.variant-featured .manga-cover-wrap,
+  .row-2 .manga-col > .manga-card.variant-standard .manga-cover-wrap,
+  .row-2 .manga-col > .manga-card.variant-chapter .manga-cover-wrap,
+  .row-2 .manga-col > .manga-card.variant-category .manga-cover-wrap,
+  .row-2 .manga-col > .manga-card.variant-favouritesChapter .manga-cover-wrap,
+  .row-3 .manga-col > .manga-card.variant-standard .manga-cover-wrap,
+  .row-3 .manga-col > .manga-card.variant-chapter .manga-cover-wrap,
+  .row-3 .manga-col > .manga-card.variant-category .manga-cover-wrap,
+  .row-3 .manga-col > .manga-card.variant-favouritesChapter .manga-cover-wrap,
+  .row-4 .manga-col > .manga-card.variant-compactOverlay .manga-cover-wrap {
+    max-height: none !important;
+  }
+}
+
+.variant-standard .manga-type {
+    color: #39ffd2;
+    text-transform: uppercase;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    display: block !important;
+    position: relative;
+}
+
+.chapter-overlay .dropped-bottom-row
+{
+margin-left:-8px}
+.row-3 .manga-type
+{
+display:none!important}
+/* =====================================================
+   FIGMA EXACT - ROW 2 TRENDING CARDS
+   ===================================================== */
+.row-2 .manga-col > .manga-card.variant-standard {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+.row-2 .manga-col > .manga-card.variant-standard:hover {
+  transform: none !important;
+}
+
+.row-2 .manga-card.variant-standard .manga-cover-wrap {
+  height: 357px !important;
+  max-height: 357px !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+  background: #111111 !important;
+  border: 2px solid #cf3ca4 !important;
+  box-shadow:
+    0 0 4px rgba(207, 60, 164, 0.95),
+    0 0 10px rgba(207, 60, 164, 0.58),
+    0 0 18px rgba(207, 60, 164, 0.34) !important;
+}
+
+.row-2 .manga-card.variant-standard .manga-cover-wrap::before,
+.row-2 .manga-card.variant-standard .manga-cover-wrap::after {
+  display: none !important;
+}
+
+.row-2 .manga-card.variant-standard .manga-cover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.row-2 .manga-card.variant-standard .manga-fav {
+  top: 10px !important;
+  right: 10px !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  background: rgba(17, 17, 17, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.row-2 .manga-card.variant-standard .manga-fav img {
+  width: 15px !important;
+  height: 15px !important;
+  object-fit: contain !important;
+}
+
+.row-2 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay {
+  position: absolute !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: 0 !important;
+  z-index: 4 !important;
+  width: 68% !important;
+  min-height: 45px !important;
+  display: block !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+}
+
+.row-2 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  background: rgba(29, 29, 29, 0.66) !important;
+  clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.row-2 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped {
+  position: absolute !important;
+  left: 16px !important;
+  bottom: 12px !important;
+  z-index: 6 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 13px !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.row-2 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.row-2 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item img {
+  width: 14px !important;
+  height: 14px !important;
+  object-fit: contain !important;
+}
+
+.row-2 .manga-card.variant-standard .manga-meta {
+  height: 33px !important;
+  flex: 0 0 33px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  padding: 11px 2px 0 !important;
+  margin: 0 !important;
+}
+
+.row-2 .manga-card.variant-standard .manga-title {
+  margin: 0 !important;
+  color: #ffffff !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 18px !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.2px !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+
+.row-2 .manga-card.variant-standard .manga-type {
+  display: block !important;
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  margin: 1px 0 0 auto !important;
+  color: #30ffe2 !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+
+/* =====================================================
+   FIGMA EXACT - ROW 3 JUST DROPPED CARDS
+   ===================================================== */
+.row-3 {
+  --index-card-max-w: 253px !important;
+  --index-cover-max-h: 326px !important;
+}
+
+.row-3 .manga-col > .manga-card.variant-chapter {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+.row-3 .manga-col > .manga-card.variant-chapter:hover {
+  transform: none !important;
+}
+
+.row-3 .manga-card.variant-chapter .manga-cover-wrap {
+  height: 326px !important;
+  max-height: 326px !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+  background: #111111 !important;
+  border: 2px solid #cf3ca4 !important;
+  box-shadow:
+    0 0 4px rgba(207, 60, 164, 0.95),
+    0 0 10px rgba(207, 60, 164, 0.58),
+    0 0 18px rgba(207, 60, 164, 0.34) !important;
+}
+
+.row-3 .manga-card.variant-chapter .manga-cover-wrap::before,
+.row-3 .manga-card.variant-chapter .manga-cover-wrap::after {
+  display: none !important;
+}
+
+.row-3 .manga-card.variant-chapter .manga-cover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  
+   object-position: center top !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.row-3 .manga-card.variant-chapter .manga-fav {
+  top: 10px !important;
+  right: 10px !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  background: rgba(17, 17, 17, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.row-3 .manga-card.variant-chapter .manga-fav img {
+  width: 15px !important;
+  height: 15px !important;
+  object-fit: contain !important;
+}
+
+/* Hide the extra stats overlay that exists in the generic chapter component. */
+.row-3 .chapter-overlay:has(.stats-overlay) {
+  display: none !important;
+}
+
+.row-3 .chapter-overlay:has(.dropped-bottom-row) {
+  left: 0 !important;
+  right: auto !important;
+  bottom: 0 !important;
+  z-index: 5 !important;
+  width: 73% !important;
+  min-height: 43px !important;
+  height: 43px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+}
+
+.row-3 .chapter-overlay:has(.dropped-bottom-row)::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(29, 29, 29, 0.68) !important;
+  clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.row-3 .chapter-overlay .dropped-bottom-row {
+  position: relative !important;
+  z-index: 1 !important;
+  width: 100% !important;
+  height: 43px !important;
+  padding: 0 16px 0 16px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+}
+
+.row-3 .chapter-tag2 {
+  color: #ffffff !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 19px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.row-3 .chapter-tag3 {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  min-width: 0 !important;
+}
+
+.row-3 .chapter-tag3 .read-more-btn {
+  color: #ffffff !important;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 16px !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  white-space: nowrap !important;
+  pointer-events: auto !important;
+}
+
+.row-3 .manga-card.variant-chapter .manga-meta {
+  height: 38px !important;
+  flex: 0 0 38px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  padding: 13px 0 0 !important;
+  margin: 0 !important;
+}
+
+.row-3 .manga-card.variant-chapter .manga-title {
+  margin: 0 !important;
+  color: #ffffff !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 17px !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.2px !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+
+.row-3 .manga-card.variant-chapter .manga-type {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+  .row-3 {
+    --index-card-max-w: 100% !important;
+    --index-cover-max-h: none !important;
+  }
+
+  .row-3 .manga-card.variant-chapter .manga-cover-wrap {
+    height: auto !important;
+    aspect-ratio: 253 / 326 !important;
+    max-height: none !important;
+  }
+}
+
+/* =====================================================
+   FINAL FIGMA FIX - ALL CARDS COVER + ROW 3 PINK BOTTOM EDGE
+   ===================================================== */
+/* All card images in all home sections behave like Figma cover images. */
+.manga-card .manga-cover,
+.manga-card.variant-featured .manga-cover,
+.manga-card.variant-standard .manga-cover,
+.manga-card.variant-chapter .manga-cover,
+.manga-card.variant-compactOverlay .manga-cover,
+.manga-card.variant-category .manga-cover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Keep the Figma pink-only card border and make the lower glow slightly wider. */
+.row-2 .manga-card.variant-standard .manga-cover-wrap {
+  border: 2px solid #cf3ca4 !important;
+  box-shadow:
+    0 0 5px rgba(207, 60, 164, 0.95),
+    0 0 12px rgba(207, 60, 164, 0.58),
+    0 0 20px rgba(207, 60, 164, 0.30),
+    0 10px 18px rgba(207, 60, 164, 0.18) !important;
+}
+
+/* Row 3 bottom trapezoid: add the thin pink light line like Figma. */
+.row-3 .chapter-overlay:has(.dropped-bottom-row)::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 10% !important;
+  top: 0 !important;
+  height: 1px !important;
+  background: linear-gradient(
+    90deg,
+    rgba(207, 60, 164, 0.96) 0%,
+    rgba(207, 60, 164, 0.68) 50%,
+    rgba(207, 60, 164, 0.16) 100%
+  ) !important;
+  box-shadow:
+    0 0 4px rgba(207, 60, 164, 0.72),
+    0 0 9px rgba(207, 60, 164, 0.42) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.row-3 .chapter-overlay .dropped-bottom-row {
+  z-index: 2 !important;
+}
+
+/* Subtle pink lower edge under the row 3 black bar, without adding a white/blue line. */
+.row-3 .chapter-overlay .dropped-bottom-row::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 12% !important;
+  bottom: 0 !important;
+  height: 1px !important;
+  background: rgba(207, 60, 164, 0.42) !important;
+  box-shadow: 0 0 7px rgba(207, 60, 164, 0.34) !important;
+  pointer-events: none !important;
+}
+
+/* =====================================================
+   FIGMA EXACT - ROW 4 TOP PICKS CARDS
+   ===================================================== */
+.row-4 {
+  --index-card-max-w: 253px !important;
+  --index-cover-max-h: 326px !important;
+}
+
+.row-4 .manga-col > .manga-card.variant-compactOverlay {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+.row-4 .manga-col > .manga-card.variant-compactOverlay:hover {
+  transform: none !important;
+}
+
+.row-4 .manga-card.variant-compactOverlay .manga-cover-wrap {
+  height: 326px !important;
+  max-height: 326px !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+  background: #111111 !important;
+  border: 2px solid #cf3ca4 !important;
+  box-shadow:
+    0 0 5px rgba(207, 60, 164, 0.95),
+    0 0 12px rgba(207, 60, 164, 0.58),
+    0 0 20px rgba(207, 60, 164, 0.30),
+    0 10px 18px rgba(207, 60, 164, 0.18) !important;
+}
+
+.row-4 .manga-card.variant-compactOverlay .manga-cover-wrap::before,
+.row-4 .manga-card.variant-compactOverlay .manga-cover-wrap::after {
+  display: none !important;
+}
+
+.row-4 .manga-card.variant-compactOverlay .manga-cover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.row-4 .manga-card.variant-compactOverlay .manga-fav {
+  top: 10px !important;
+  right: 10px !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  background: rgba(17, 17, 17, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.row-4 .manga-card.variant-compactOverlay .manga-fav img {
+  width: 15px !important;
+  height: 15px !important;
+  object-fit: contain !important;
+}
+
+.row-4 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay {
+  position: absolute !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: 0 !important;
+  z-index: 4 !important;
+  width: 73% !important;
+  min-height: 43px !important;
+  height: 43px !important;
+  display: block !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+}
+
+.row-4 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  background: rgba(29, 29, 29, 0.68) !important;
+  clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.row-4 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped {
+  position: absolute !important;
+  left: 18px !important;
+  bottom: 15px !important;
+  z-index: 6 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 13px !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.row-4 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.row-4 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item img {
+  width: 14px !important;
+  height: 14px !important;
+  object-fit: contain !important;
+}
+
+.row-4 .manga-card.variant-compactOverlay .manga-meta {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+  .row-4 {
+    --index-card-max-w: 100% !important;
+    --index-cover-max-h: none !important;
+  }
+
+  .row-4 .manga-card.variant-compactOverlay .manga-cover-wrap {
+    height: auto !important;
+    aspect-ratio: 253 / 326 !important;
+    max-height: none !important;
+  }
+}
+
+/* =====================================================
+   FINAL FIGMA FIX - EXACT STATS BAR STYLE
+   ===================================================== */
+/* Applies the same stats bar shape and spacing shown in Figma to all image-card sections. */
+.row-2 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay,
+.row-4 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay {
+  position: absolute !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: 0 !important;
+  z-index: 4 !important;
+  width: 74% !important;
+  height: 43px !important;
+  min-height: 43px !important;
+  display: block !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+}
+
+.row-2 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay::before,
+.row-4 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(29, 29, 29, 0.62) !important;
+  clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%) !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  outline: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.row-2 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped,
+.row-4 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped {
+  position: absolute !important;
+  left: 18px !important;
+  right: auto !important;
+  bottom: 14px !important;
+  z-index: 7 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 11px !important;
+  width: auto !important;
+  max-width: none !important;
+  height: 13px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.row-2 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item,
+.row-4 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+  height: 13px !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 11px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 13px !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+}
+
+.row-2 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item img,
+.row-4 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item img {
+  width: 13px !important;
+  height: 13px !important;
+  object-fit: contain !important;
+  display: block !important;
+  flex: 0 0 13px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* =====================================================
+   FINAL FIX - NO CROPPING INSIDE ANY CARD IMAGE
+   ===================================================== */
+.manga-card .manga-cover-wrap,
+.favourites-chapter-image-shell {
+  background: #111111 !important;
+}
+
+.manga-card .manga-cover,
+.manga-card.variant-featured .manga-cover,
+.manga-card.variant-standard .manga-cover,
+.manga-card.variant-chapter .manga-cover,
+.manga-card.variant-episode .manga-cover,
+.manga-card.variant-episodeRow .manga-cover,
+.manga-card.variant-favouritesChapter .favourites-chapter-image,
+.manga-card.variant-compactOverlay .manga-cover,
+.manga-card.variant-category .manga-cover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+/* =====================================================
+   FINAL FIX - REMOVE BLACK LETTERBOX BARS
+   Keeps the image full inside row-1 cards without top/bottom black bands.
+   ===================================================== */
+.row-1 .manga-card,
+.row-1 .manga-card.variant-featured,
+.row-1 .manga-card.variant-featured .manga-cover-wrap {
+  background: transparent !important;
+}
+
+.row-1 .manga-card.variant-featured .manga-cover-wrap {
+  overflow: hidden !important;
+}
+
+.row-1 .manga-card.variant-featured .manga-cover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+
+/* =====================================================
+   FIGMA ICON - ROW 3 READ MORE
+   ===================================================== */
+.read-more-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+}
+
+.read-more-icon {
+  width: 19px !important;
+  height: 9px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+  flex: 0 0 auto !important;
+  margin-top: 1px !important;
+}
+
+[dir="rtl"] .read-more-icon {
+  transform: scaleX(-1) !important;
+}
+
+
+/* =====================================================
+   FINAL FIX - READ MORE DOUBLE CHEVRON ICONS
+   ===================================================== */
+.read-more-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+}
+
+.read-more-icons {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  flex: 0 0 auto !important;
+  line-height: 0 !important;
+  margin-top: 1px !important;
+}
+
+.read-more-icons .read-more-icon {
+  width: 9px !important;
+  height: 9px !important;
+  object-fit: contain !important;
+  display: block !important;
+  flex: 0 0 9px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+[dir="rtl"] .read-more-icons {
+  transform: scaleX(-1) !important;
+}
+
+[dir="rtl"] .read-more-icons .read-more-icon {
+  transform: none !important;
+}
+
+
+/* =====================================================
+   FINAL PIXEL FIX - READ MORE DOUBLE ICONS NO SPACE
+   Figma shows the two arrows touching each other with no gap.
+   ===================================================== */
+.read-more-icons,
+.blog-read-more-icons {
+  gap: 0 !important;
+  column-gap: 0 !important;
+  letter-spacing: -4px !important;
+}
+
+.read-more-icons .read-more-icon,
+.blog-read-more-icons .blog-read-more-icon {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.read-more-icons .read-more-icon + .read-more-icon,
+.blog-read-more-icons .blog-read-more-icon + .blog-read-more-icon {
+  margin-left: -2px !important;
+}
+
+[dir="rtl"] .read-more-icons .read-more-icon + .read-more-icon,
+.blog-card.font-ar .blog-read-more-icons .blog-read-more-icon + .blog-read-more-icon {
+  margin-left: 0 !important;
+  margin-right: -2px !important;
+}
+
+
+/* =====================================================
+   FINAL API + FIGMA LAYOUT RESTORE
+   API images have mixed aspect ratios, so homepage cards must use cover
+   to preserve the exact Figma card shape with no black empty areas.
+   ===================================================== */
+.home-page .row-1 .manga-card,
+.home-page .row-2 .manga-card,
+.home-page .row-3 .manga-card,
+.home-page .row-4 .manga-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  background: transparent !important;
+}
+
+.home-page .row-1 .manga-cover-wrap,
+.home-page .row-2 .manga-cover-wrap,
+.home-page .row-3 .manga-cover-wrap,
+.home-page .row-4 .manga-cover-wrap {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+.home-page .row-1 .manga-cover,
+.home-page .row-2 .manga-cover,
+.home-page .row-3 .manga-cover,
+.home-page .row-4 .manga-cover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  background: transparent !important;
+}
+
+.home-page .row-1 .manga-card.variant-featured .manga-cover-wrap {
+  height: 488px !important;
+  border-radius: 6px !important;
+}
+
+.home-page .row-2 .manga-card.variant-standard .manga-cover-wrap,
+.home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap,
+.home-page .row-4 .manga-card.variant-compactOverlay .manga-cover-wrap {
+  height: 372px !important;
+  border-radius: 6px !important;
+}
+
+.home-page .row-3 .chapter-overlay {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 8 !important;
+  pointer-events: none !important;
+}
+
+.home-page .row-3 .dropped-bottom-row {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 52px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 0 11px 8px 0 !important;
+  background: rgba(8, 8, 8, 0.82) !important;
+  pointer-events: auto !important;
+}
+
+.home-page .row-3 .chapter-tag2 {
+  min-width: 126px !important;
+  height: 42px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 18px !important;
+  background: #cf3ca4 !important;
+  color: #fff !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+  white-space: nowrap !important;
+}
+
+.home-page .row-3 .chapter-tag3 {
+  align-self: flex-end !important;
+  margin-bottom: 2px !important;
+  white-space: nowrap !important;
+}
+
+.home-page .row-3 .chapter-tag3 .read-more-btn {
+  pointer-events: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 4px !important;
+  color: #fff !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 17px !important;
+  font-style: italic !important;
+  font-weight: 100 !important;
+  line-height: 1 !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px !important;
+}
+
+@media (max-width: 991px) {
+  .home-page .row-1 .manga-card.variant-featured .manga-cover-wrap {
+    height: 321px !important;
+  }
+
+  .home-page .row-2 .manga-card.variant-standard .manga-cover-wrap,
+  .home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap,
+  .home-page .row-4 .manga-card.variant-compactOverlay .manga-cover-wrap {
+    height: 181px !important;
+  }
+}
+
+/* =====================================================
+   FINAL MOBILE FIGMA EXACT CARD SIZING
+   API data + Figma mobile layout: 3 cards visible per row.
+   ===================================================== */
+@media (max-width: 576px) {
+  .home-page .row-1 .manga-col > .manga-card,
+  .home-page .row-2 .manga-col > .manga-card,
+  .home-page .row-3 .manga-col > .manga-card,
+  .home-page .row-4 .manga-col > .manga-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+    background: transparent !important;
+  }
+
+  .home-page .manga-card:hover,
+  .home-page .manga-card:hover .manga-cover {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .home-page .row-1 .manga-card.variant-featured .manga-cover-wrap,
+  .home-page .row-2 .manga-card.variant-standard .manga-cover-wrap,
+  .home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap,
+  .home-page .row-4 .manga-card.variant-compactOverlay .manga-cover-wrap {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    border-radius: 3px !important;
+    background: transparent !important;
+  }
+
+  .home-page .row-1 .manga-card.variant-featured .manga-cover-wrap {
+    aspect-ratio: 64 / 116 !important;
+  }
+
+  .home-page .row-2 .manga-card.variant-standard .manga-cover-wrap,
+  .home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap,
+  .home-page .row-4 .manga-card.variant-compactOverlay .manga-cover-wrap {
+    aspect-ratio: 64 / 108 !important;
+    border: 1px solid #cf3ca4 !important;
+    box-shadow:
+      0 0 2px rgba(207, 60, 164, 0.9),
+      0 0 6px rgba(207, 60, 164, 0.42) !important;
+  }
+
+  .home-page .row-1 .manga-cover,
+  .home-page .row-2 .manga-cover,
+  .home-page .row-3 .manga-cover,
+  .home-page .row-4 .manga-cover {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border-radius: 3px !important;
+    display: block !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .home-page .manga-fav,
+  .home-page .row-1 .manga-card.variant-featured .manga-fav,
+  .home-page .row-2 .manga-card.variant-standard .manga-fav,
+  .home-page .row-3 .manga-card.variant-chapter .manga-fav,
+  .home-page .row-4 .manga-card.variant-compactOverlay .manga-fav {
+    top: 3px !important;
+    right: 3px !important;
+    width: clamp(16px, 5.4vw, 22px) !important;
+    height: clamp(16px, 5.4vw, 22px) !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(255,255,255,0.85) !important;
+    background: rgba(17, 17, 17, 0.75) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .home-page .manga-fav img,
+  .home-page .row-1 .manga-card.variant-featured .manga-fav img,
+  .home-page .row-2 .manga-card.variant-standard .manga-fav img,
+  .home-page .row-3 .manga-card.variant-chapter .manga-fav img,
+  .home-page .row-4 .manga-card.variant-compactOverlay .manga-fav img {
+    width: clamp(8px, 2.7vw, 12px) !important;
+    height: clamp(8px, 2.7vw, 12px) !important;
+  }
+
+  /* Row 1 exclusive bottom UI */
+  .home-page .row-1-top-label {
+    top: 4px !important;
+    left: 4px !important;
+    font-size: clamp(4px, 1.45vw, 7px) !important;
+    line-height: 1 !important;
+  }
+
+  .home-page .row-1-next-btn {
+    left: 0 !important;
+    bottom: clamp(20px, 5.8vw, 30px) !important;
+    min-width: clamp(52px, 17vw, 78px) !important;
+    height: clamp(13px, 4vw, 19px) !important;
+    padding: 0 3px !important;
+    font-size: clamp(5px, 1.7vw, 8px) !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .home-page .row-1-meta-bar {
+    min-height: clamp(22px, 6.2vw, 31px) !important;
+    height: clamp(22px, 6.2vw, 31px) !important;
+    padding: 3px 5px 4px !important;
+    gap: 3px !important;
+    align-items: center !important;
+  }
+
+  .home-page .row-1-meta-bar::before {
+    width: 72% !important;
+    background: rgba(29, 29, 29, 0.72) !important;
+  }
+
+  .home-page .row-1-meta-right {
+    gap: 3px !important;
+    margin-left: 2px !important;
+  }
+
+  .home-page .row-1-meta-icon {
+    width: clamp(8px, 2.8vw, 12px) !important;
+    height: clamp(8px, 2.8vw, 12px) !important;
+  }
+
+  .home-page .row-1-meta-date {
+    font-size: clamp(6px, 2.2vw, 11px) !important;
+    line-height: 1 !important;
+  }
+
+  .home-page .date-suffix {
+    font-size: 5px !important;
+    top: -4px !important;
+  }
+
+  /* Row 2/4 stats trapezoid */
+  .home-page .row-2 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay,
+  .home-page .row-4 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay {
+    left: 0 !important;
+    right: auto !important;
+    bottom: 0 !important;
+    width: 74% !important;
+    height: clamp(12px, 4.1vw, 17px) !important;
+    min-height: clamp(12px, 4.1vw, 17px) !important;
+    display: block !important;
+  }
+
+  .home-page .row-2 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay::before,
+  .home-page .row-4 .manga-card-overlay-meta .manga-cover-wrap .manga-meta-overlay::before {
+    clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%) !important;
+    background: rgba(29,29,29,0.66) !important;
+  }
+
+  .home-page .row-2 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped,
+  .home-page .row-4 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped {
+    left: 5px !important;
+    bottom: clamp(3px, 1.35vw, 6px) !important;
+    gap: clamp(3px, 1.2vw, 6px) !important;
+    height: auto !important;
+    max-width: calc(100% - 8px) !important;
+  }
+
+  .home-page .row-2 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item,
+  .home-page .row-4 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item {
+    gap: 1px !important;
+    font-size: clamp(4px, 1.35vw, 7px) !important;
+    line-height: 1 !important;
+    height: auto !important;
+  }
+
+  .home-page .row-2 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item img,
+  .home-page .row-4 .manga-card-overlay-meta .manga-cover-wrap .stats-overlay-shaped .stat-item img {
+    width: clamp(5px, 1.9vw, 8px) !important;
+    height: clamp(5px, 1.9vw, 8px) !important;
+    flex-basis: clamp(5px, 1.9vw, 8px) !important;
+  }
+
+  /* Row 2 text below cards */
+  .home-page .row-2 .manga-card.variant-standard .manga-meta,
+  .home-page .row-3 .manga-card.variant-chapter .manga-meta {
+    height: clamp(15px, 5.2vw, 23px) !important;
+    flex-basis: clamp(15px, 5.2vw, 23px) !important;
+    padding: 4px 0 0 !important;
+    gap: 3px !important;
+    align-items: flex-start !important;
+  }
+
+  .home-page .row-2 .manga-card.variant-standard .manga-title,
+  .home-page .row-3 .manga-card.variant-chapter .manga-title,
+  .home-page .row-4 .manga-card.variant-compactOverlay .manga-title {
+    font-size: clamp(5px, 1.65vw, 8px) !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 72% !important;
+  }
+
+  .home-page .row-2 .manga-card.variant-standard .manga-type,
+  .home-page .row-3 .manga-card.variant-chapter .manga-type {
+    display: block !important;
+    font-size: clamp(4.5px, 1.45vw, 7px) !important;
+    line-height: 1 !important;
+    margin: 1px 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+
+  /* Row 3 just dropped: compact bottom bar like Figma mobile */
+  .home-page .row-3 .chapter-overlay,
+  .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row) {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: clamp(13px, 4.2vw, 18px) !important;
+    min-height: clamp(13px, 4.2vw, 18px) !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  .home-page .row-3 .chapter-overlay::before,
+  .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::before,
+  .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::after {
+    display: none !important;
+  }
+
+  .home-page .row-3 .dropped-bottom-row,
+  .home-page .row-3 .chapter-overlay .dropped-bottom-row {
+    width: 100% !important;
+    height: clamp(13px, 4.2vw, 18px) !important;
+    min-height: clamp(13px, 4.2vw, 18px) !important;
+    padding: 0 3px !important;
+    margin: 0 !important;
+    background: rgba(29,29,29,0.72) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 2px !important;
+  }
+
+  .home-page .row-3 .chapter-tag2 {
+    min-width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    font-size: clamp(4.5px, 1.5vw, 7px) !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .home-page .row-3 .chapter-tag3 {
+    align-self: center !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+  }
+
+  .home-page .row-3 .chapter-tag3 .read-more-btn {
+    font-size: clamp(4.5px, 1.5vw, 7px) !important;
+    gap: 1px !important;
+    text-underline-offset: 1px !important;
+    white-space: nowrap !important;
+  }
+
+  .home-page .read-more-icons .read-more-icon {
+    width: clamp(3px, 1.15vw, 5px) !important;
+    height: clamp(3px, 1.15vw, 5px) !important;
+    flex-basis: clamp(3px, 1.15vw, 5px) !important;
+  }
+
+  .home-page .read-more-icons .read-more-icon + .read-more-icon {
+    margin-left: -1px !important;
+  }
+}
+
+/* =====================================================
+   FINAL MATCH OVERRIDE - HOME ROW 3 / JUST DROPPED
+   Target: match the provided reference (CH.12 / Read More / THE TITTLE)
+   ===================================================== */
+.home-page .row-3 .chapter-overlay,
+.home-page .row-3 .chapter-overlay:has(.dropped-bottom-row) {
+  position: absolute !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: 0 !important;
+  width: 86% !important;
+  min-height: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+  pointer-events: none !important;
+  overflow: visible !important;
+  z-index: 9 !important;
+}
+
+.home-page .row-3 .chapter-overlay::before,
+.home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: 2px !important;
+  background: linear-gradient(180deg, rgba(34,34,34,0.86) 0%, rgba(18,18,18,0.92) 100%) !important;
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%) !important;
+  border: 1px solid rgba(255, 83, 191, 0.45) !important;
+  box-shadow:
+    0 0 12px rgba(255, 65, 180, 0.40),
+    inset 0 0 0 1px rgba(255,255,255,0.04) !important;
+  backdrop-filter: blur(1.5px) !important;
+  -webkit-backdrop-filter: blur(1.5px) !important;
+}
+
+.home-page .row-3 .chapter-overlay::after,
+.home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::after {
+  content: "" !important;
+  position: absolute !important;
+  right: -30px !important;
+  bottom: 0 !important;
+  width: 42px !important;
+  height: 3px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(90deg, rgba(255,77,188,0.95) 0%, rgba(255,77,188,0.20) 100%) !important;
+  box-shadow: 0 0 10px rgba(255,77,188,0.60) !important;
+}
+
+.home-page .row-3 .dropped-bottom-row,
+.home-page .row-3 .chapter-overlay .dropped-bottom-row {
+  position: relative !important;
+  z-index: 1 !important;
+  width: 100% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  margin: 0 !important;
+  padding: 0 16px 0 16px !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  pointer-events: auto !important;
+}
+
+.home-page .row-3 .chapter-tag2 {
+  min-width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  text-shadow: 0 0 6px rgba(255,255,255,0.08) !important;
+}
+
+.home-page .row-3 .chapter-tag3 {
+  display: inline-flex !important;
+  align-items: center !important;
+  align-self: center !important;
+  justify-content: flex-end !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.home-page .row-3 .chapter-tag3 .read-more-btn {
+  pointer-events: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 4px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 15px !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 2px !important;
+  white-space: nowrap !important;
+}
+
+.home-page .row-3 .chapter-tag3 .read-more-btn:hover {
+  opacity: 0.92 !important;
+  text-shadow: none !important;
+}
+
+.home-page .row-3 .chapter-tag3 .read-more-icons {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  line-height: 0 !important;
+  margin-top: 1px !important;
+}
+
+.home-page .row-3 .chapter-tag3 .read-more-icons .read-more-icon {
+  width: 9px !important;
+  height: 9px !important;
+  flex: 0 0 9px !important;
+  margin: 0 !important;
+}
+
+.home-page .row-3 .chapter-tag3 .read-more-icons .read-more-icon + .read-more-icon {
+  margin-left: -2px !important;
+}
+
+.home-page .row-3 .manga-card.variant-chapter .manga-meta {
+  height: auto !important;
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  padding: 10px 2px 0 !important;
+  margin: 0 !important;
+}
+
+.home-page .row-3 .manga-card.variant-chapter .manga-title {
+  margin: 0 !important;
+  color: #ffffff !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 17px !important;
+  font-style: italic !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.2px !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-shadow: none !important;
+}
+
+.home-page .row-3 .manga-card.variant-chapter .manga-type {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+  .home-page .row-3 .chapter-overlay,
+  .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row) {
+    width: 88% !important;
+    min-height: clamp(18px, 5vw, 24px) !important;
+    height: clamp(18px, 5vw, 24px) !important;
+  }
+
+  .home-page .row-3 .chapter-overlay::after,
+  .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::after {
+    right: -18px !important;
+    width: 24px !important;
+    height: 2px !important;
+  }
+
+  .home-page .row-3 .dropped-bottom-row,
+  .home-page .row-3 .chapter-overlay .dropped-bottom-row {
+    height: clamp(18px, 5vw, 24px) !important;
+    min-height: clamp(18px, 5vw, 24px) !important;
+    padding: 0 8px !important;
+    gap: 4px !important;
+  }
+
+  .home-page .row-3 .chapter-tag2 {
+    font-size: clamp(7px, 1.9vw, 10px) !important;
+  }
+
+  .home-page .row-3 .chapter-tag3 .read-more-btn {
+    font-size: clamp(6px, 1.65vw, 9px) !important;
+    gap: 1px !important;
+    text-underline-offset: 1px !important;
+  }
+
+  .home-page .row-3 .chapter-tag3 .read-more-icons .read-more-icon {
+    width: clamp(4px, 1vw, 6px) !important;
+    height: clamp(4px, 1vw, 6px) !important;
+    flex-basis: clamp(4px, 1vw, 6px) !important;
+  }
+
+  .home-page .row-3 .manga-card.variant-chapter .manga-meta {
+    padding: 6px 1px 0 !important;
+  }
+
+  .home-page .row-3 .manga-card.variant-chapter .manga-title {
+    font-size: clamp(7px, 2vw, 11px) !important;
+    max-width: 100% !important;
+  }
+}
+
+[dir="rtl"] .home-page .row-3 .chapter-overlay,
+[dir="rtl"] .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row) {
+  left: auto !important;
+  right: 0 !important;
+}
+
+[dir="rtl"] .home-page .row-3 .chapter-overlay::before,
+[dir="rtl"] .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::before {
+  clip-path: polygon(0 100%, 10% 0, 100% 0, 100% 100%) !important;
+}
+
+[dir="rtl"] .home-page .row-3 .chapter-overlay::after,
+[dir="rtl"] .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::after {
+  right: auto !important;
+  left: -30px !important;
+  background: linear-gradient(270deg, rgba(255,77,188,0.95) 0%, rgba(255,77,188,0.20) 100%) !important;
+}
+
+[dir="rtl"] .home-page .row-3 .chapter-overlay .dropped-bottom-row {
+  direction: rtl !important;
+}
+
+[dir="rtl"] .home-page .row-3 .chapter-tag3 .read-more-icons {
+  transform: scaleX(-1) !important;
+}
+
+/* =====================================================
+   ULTIMATE PIXEL OVERRIDE - EXACT REFERENCE LOCK
+   ===================================================== */
+.home-page .row-3 .chapter-overlay,
+.home-page .row-3 .chapter-overlay:has(.dropped-bottom-row) {
+  width: 83.2% !important;
+  min-height: 38px !important;
+  height: 38px !important;
+}
+
+.home-page .row-3 .chapter-overlay::before,
+.home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::before {
+  border-radius: 1px !important;
+  background: linear-gradient(180deg, rgba(28,28,28,0.90) 0%, rgba(17,17,17,0.94) 100%) !important;
+  clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%) !important;
+  border: 1px solid rgba(255, 63, 176, 0.42) !important;
+  box-shadow:
+    0 0 10px rgba(255, 63, 176, 0.34),
+    inset 0 0 0 1px rgba(255,255,255,0.03) !important;
+}
+
+.home-page .row-3 .chapter-overlay::after,
+.home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::after {
+  right: -34px !important;
+  width: 50px !important;
+  height: 3px !important;
+  border-radius: 999px !important;
+}
+
+.home-page .row-3 .dropped-bottom-row,
+.home-page .row-3 .chapter-overlay .dropped-bottom-row {
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 14px 0 14px !important;
+  gap: 10px !important;
+}
+
+.home-page .row-3 .chapter-tag2 {
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+}
+
+.home-page .row-3 .chapter-tag3 .read-more-btn {
+  font-size: 14px !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  text-underline-offset: 2px !important;
+}
+
+.home-page .row-3 .chapter-tag3 .read-more-icons .read-more-icon {
+  width: 8px !important;
+  height: 8px !important;
+  flex-basis: 8px !important;
+}
+
+.home-page .row-3 .manga-card.variant-chapter .manga-meta {
+  padding: 10px 1px 0 !important;
+}
+
+.home-page .row-3 .manga-card.variant-chapter .manga-title {
+  font-size: 15px !important;
+  font-style: italic !important;
+  font-weight: 900 !important;
+  letter-spacing: 0 !important;
+}
+
+@media (max-width: 991px) {
+  .home-page .row-3 .chapter-overlay,
+  .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row) {
+    width: 84% !important;
+    min-height: clamp(18px, 5vw, 23px) !important;
+    height: clamp(18px, 5vw, 23px) !important;
+  }
+
+  .home-page .row-3 .chapter-overlay::after,
+  .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::after {
+    right: -17px !important;
+    width: 22px !important;
+    height: 2px !important;
+  }
+
+  .home-page .row-3 .dropped-bottom-row,
+  .home-page .row-3 .chapter-overlay .dropped-bottom-row {
+    height: clamp(18px, 5vw, 23px) !important;
+    min-height: clamp(18px, 5vw, 23px) !important;
+    padding: 0 7px !important;
+    gap: 3px !important;
+  }
+
+  .home-page .row-3 .chapter-tag2 {
+    font-size: clamp(7px, 1.8vw, 9px) !important;
+  }
+
+  .home-page .row-3 .chapter-tag3 .read-more-btn {
+    font-size: clamp(6px, 1.55vw, 8px) !important;
+  }
+
+  .home-page .row-3 .chapter-tag3 .read-more-icons .read-more-icon {
+    width: clamp(3.5px, 0.95vw, 5px) !important;
+    height: clamp(3.5px, 0.95vw, 5px) !important;
+    flex-basis: clamp(3.5px, 0.95vw, 5px) !important;
+  }
+
+  .home-page .row-3 .manga-card.variant-chapter .manga-title {
+    font-size: clamp(7px, 1.9vw, 10px) !important;
+  }
+}
+
+[dir="rtl"] .home-page .row-3 .chapter-overlay::after,
+[dir="rtl"] .home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::after {
+  left: -34px !important;
+  right: auto !important;
+}
+/* Move Read More slightly left + remove top border from chapter overlay */
+.home-page .row-3 .chapter-tag3 .read-more-btn {
+  transform: translateX(-12px) !important;
+}
+
+.home-page .row-3 .chapter-overlay::before,
+.home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::before {
+  border-top: 0 !important;
+}
+.home-page .row-3 .chapter-overlay::before,
+.home-page .row-3 .chapter-overlay:has(.dropped-bottom-row)::before {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Remove pink top line above CH12 / Read More black overlay */
+.row-3 .chapter-overlay:has(.dropped-bottom-row)::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}   
+
+
+
+
+
+
+
+
+
+
+/* TOP PICKS ONLY - show full image without top/bottom crop */
+.home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap {
+  height: 372px !important;
+  background: #000 !important;
+  overflow: hidden !important;
+}
+
+.home-page .row-3 .manga-card.variant-chapter .manga-cover {
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: contain !important;
+  object-position: center center !important;
+
+  transform: none !important;
+  scale: 1 !important;
+  filter: none !important;
+  background: #000 !important;
+}
+
+/* stop hover from cropping again */
+.home-page .row-3 .manga-card.variant-chapter:hover .manga-cover {
+  transform: none !important;
+  scale: 1 !important;
+  filter: none !important;
+}
+
+/* Border color only for TRENDING / TOP PICKS / JUST DROPPED */
+.home-page .row-2 .manga-card .manga-cover-wrap,
+.home-page .row-4 .manga-card .manga-cover-wrap {
+  border-top-color: #B8D8FF !important;
+  border-bottom-color: #CB4699 !important;
+}
+
+/* FINAL: Gradient border + working border radius */
+.home-page .row-2 .manga-card .manga-cover-wrap,
+.home-page .row-4 .manga-card .manga-cover-wrap  {
+  border: 0 !important;
+  padding: 2px !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+
+  background: linear-gradient(
+    to bottom,
+    #B8D8FF 0%,
+    #B8D8FF 12%,
+    #9C8DFF 45%,
+    #CB4699 78%,
+    #CB4699 100%
+  ) !important;
+}
+
+/* image takes inner radius */
+.home-page .row-2 .manga-card .manga-cover,
+.home-page .row-3 .manga-card .manga-cover,
+.home-page .row-4 .manga-card .manga-cover {
+  border-radius: 4px !important;
+  display: block !important;
+}
+
+/* bottom overlay also follows radius */
+.home-page .row-3 .manga-card .chapter-overlay {
+  left: 2px !important;
+  right: 2px !important;
+  bottom: 2px !important;
+  width: auto !important;
+  border-radius: 0 0 4px 4px !important;
+  overflow: hidden !important;
+}
+
+
+/* Remove gradient effect from JUST DROPPED only */
+.home-page .row-3 .manga-card .manga-cover-wrap {
+  padding: 0 !important;
+  background: transparent !important;
+  border: 2px solid #cb4699 !important;
+  border-radius: 5px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Keep image clean inside JUST DROPPED */
+.home-page .row-3 .manga-card .manga-cover {
+  border-radius: 3px !important;
+}
+
+/* Keep chapter black bar normal */
+.home-page .row-3 .manga-card .chapter-overlay {
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  border-radius: 0 0 3px 3px !important;
+}
+/* FINAL RESET - JUST DROPPED ONLY */
+.home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap,
+.row-3 .manga-card.variant-chapter .manga-cover-wrap {
+  padding: 0 !important;
+  background: #111111 !important;
+  border: 2px solid #cf3ca4 !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+
+.home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap::before,
+.home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap::after,
+.row-3 .manga-card.variant-chapter .manga-cover-wrap::before,
+.row-3 .manga-card.variant-chapter .manga-cover-wrap::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.row-3 .chapter-overlay:has(.dropped-bottom-row)::after,
+.row-3 .chapter-overlay .dropped-bottom-row::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* =====================================================
+   FINAL FIX - EXCLUSIVE CONTENT NO BORDER RADIUS
+   ===================================================== */
+/* EXCLUSIVE CONTENT is the featured/exclusive row. Keep the existing size, image, border and glow;
+   only remove the rounded corners from every layer that can create radius. */
+.home-page .row-1 .manga-card,
+.home-page .row-1 .manga-card.variant-featured,
+.home-page .row-1 .manga-card .manga-cover-wrap,
+.home-page .row-1 .manga-card.variant-featured .manga-cover-wrap,
+.home-page .row-1 .manga-card .manga-cover,
+.home-page .row-1 .manga-card.variant-featured .manga-cover,
+.home-page .row-1 .manga-card .manga-cover-wrap::before,
+.home-page .row-1 .manga-card .manga-cover-wrap::after,
+.home-page .row-1 .row-1-bottom-ui,
+.home-page .row-1 .row-1-meta-bar,
+.home-page .row-1 .row-1-meta-bar::before,
+.home-page .row-1 .row-1-next-btn {
+  border-radius: 0 !important;
+}
+
+/* If the EXCLUSIVE CONTENT section is rendered as row-5 on any page/state,
+   remove radius there too without touching TRENDING / JUST DROPPED / TOP PICKS. */
+.home-page .row-5 .manga-card,
+.home-page .row-5 .manga-card.variant-episode,
+.home-page .row-5 .manga-card .manga-cover-wrap,
+.home-page .row-5 .manga-card.variant-episode .manga-cover-wrap,
+.home-page .row-5 .manga-card .manga-cover,
+.home-page .row-5 .manga-card.variant-episode .manga-cover,
+.home-page .row-5 .manga-card .manga-cover-wrap::before,
+.home-page .row-5 .manga-card .manga-cover-wrap::after,
+.home-page .row-5 .manga-card img {
+  border-radius: 0 !important;
+}
+
+/* =====================================================
+   FINAL REPAIR - JUST DROPPED GRADIENT BORDER
+   Must stay AFTER the EXCLUSIVE CONTENT no-radius rules.
+   Restores the gradient border for JUST DROPPED only.
+   ===================================================== */
+.home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap,
+.row-3 .manga-card.variant-chapter .manga-cover-wrap {
+  height: 326px !important;
+  max-height: 326px !important;
+  border: 0 !important;
+  padding: 2px !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  background: linear-gradient(
+    to bottom,
+    #B8D8FF 0%,
+    #B8D8FF 10%,
+    #9C8DFF 42%,
+    #CB4699 75%,
+    #CB4699 100%
+  ) !important;
+  box-shadow:
+    0 0 5px rgba(184, 216, 255, 0.40),
+    0 0 12px rgba(203, 70, 153, 0.48),
+    0 10px 18px rgba(203, 70, 153, 0.16) !important;
+}
+
+.home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap::before,
+.home-page .row-3 .manga-card.variant-chapter .manga-cover-wrap::after,
+.row-3 .manga-card.variant-chapter .manga-cover-wrap::before,
+.row-3 .manga-card.variant-chapter .manga-cover-wrap::after {
+  content: none !important;
+  display: none !important;
+}
+
+.home-page .row-3 .manga-card.variant-chapter .manga-cover,
+.row-3 .manga-card.variant-chapter .manga-cover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 4px !important;
+  transform: none !important;
+  filter: none !important;
+  display: block !important;
+}
+
+.home-page .row-3 .manga-card.variant-chapter:hover .manga-cover,
+.row-3 .manga-card.variant-chapter:hover .manga-cover {
+  transform: none !important;
+  filter: none !important;
+}
+
+.home-page .row-3 .chapter-overlay:has(.dropped-bottom-row),
+.row-3 .chapter-overlay:has(.dropped-bottom-row) {
+  left: 2px !important;
+  bottom: 2px !important;
+  right: auto !important;
+}
+
+.home-page .row-3 .chapter-overlay .dropped-bottom-row,
+.row-3 .chapter-overlay .dropped-bottom-row {
+  border-radius: 0 0 4px 4px !important;
+}
+
+/* Keep EXCLUSIVE CONTENT square after the row-3 repair above. */
+.home-page .row-1 .manga-card .manga-cover-wrap,
+.home-page .row-1 .manga-card .manga-cover,
+.home-page .row-1 .manga-card .manga-cover-wrap::before,
+.home-page .row-1 .manga-card .manga-cover-wrap::after,
+.home-page .row-5 .manga-card .manga-cover-wrap,
+.home-page .row-5 .manga-card .manga-cover,
+.home-page .row-5 .manga-card .manga-cover-wrap::before,
+.home-page .row-5 .manga-card .manga-cover-wrap::after,
+.home-page .row-5 .manga-card img {
+  border-radius: 0 !important;
+}

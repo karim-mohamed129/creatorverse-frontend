@@ -1,0 +1,507 @@
+import React, { useRef, useState, useEffect } from "react";
+import Header, { Lang } from "../components/Header";
+import Footer from "../components/Footer";
+import SectionHeader from "../components/SectionHeader";
+import SliderSection from "../components/SliderSection";
+import BlogCard, { BlogItem } from "../components/BlogCard";
+import { CardItem, CardVariant } from "../components/MangaCard";
+import BackToTop from "../components/BackToTop";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Globals.css";
+
+import pageBg from "../assets/images/background.png";
+import arrowImg from "../assets/images/arrow.png";
+import crownImg from "../assets/images/crown.png";
+
+import viewsIcon from "../assets/icons/views.svg";
+import likesIcon from "../assets/icons/likes.svg";
+import sharesIcon from "../assets/icons/shares.svg";
+import chipShape from "../assets/icons/chip-shape.svg";
+import heart from "../assets/icons/heart.svg";
+
+import home1 from "../assets/images/home/1.png";
+import home2 from "../assets/images/home/2.png";
+import home3 from "../assets/images/home/3.png";
+import home4 from "../assets/images/home/4.png";
+import home5 from "../assets/images/home/5.png";
+import home6 from "../assets/images/home/6.png";
+import home7 from "../assets/images/home/7.png";
+import home8 from "../assets/images/home/8.png";
+import home9 from "../assets/images/home/9.png";
+import home10 from "../assets/images/home/10.png";
+import home11 from "../assets/images/home/11.png";
+import home12 from "../assets/images/home/12.png";
+import home13 from "../assets/images/home/13.png";
+import home14 from "../assets/images/home/14.png";
+import home15 from "../assets/images/home/15.png";
+import home16 from "../assets/images/home/16.png";
+import home17 from "../assets/images/home/17.png";
+import home18 from "../assets/images/home/18.png";
+import home19 from "../assets/images/home/19.png";
+import home20 from "../assets/images/home/20.png";
+import home21 from "../assets/images/home/21.png";
+import home22 from "../assets/images/home/22.png";
+
+type SectionData = {
+  name: string;
+  variant: CardVariant;
+  rowClass: string;
+  items: CardItem[];
+};
+
+type DragState = {
+  isDown: boolean;
+  startX: number;
+  scrollLeft: number;
+};
+
+const assetUri = (asset: any): string =>
+  typeof asset === "string" ? asset : asset?.uri ?? "";
+
+const homeImages: Record<number, string> = {
+  1: assetUri(home1),
+  2: assetUri(home2),
+  3: assetUri(home3),
+  4: assetUri(home4),
+  5: assetUri(home5),
+  6: assetUri(home6),
+  7: assetUri(home7),
+  8: assetUri(home8),
+  9: assetUri(home9),
+  10: assetUri(home10),
+  11: assetUri(home11),
+  12: assetUri(home12),
+  13: assetUri(home13),
+  14: assetUri(home14),
+  15: assetUri(home15),
+  16: assetUri(home16),
+  17: assetUri(home17),
+  18: assetUri(home18),
+  19: assetUri(home19),
+  20: assetUri(home20),
+  21: assetUri(home21),
+  22: assetUri(home22),
+};
+
+const pageBgUri = assetUri(pageBg);
+const arrowUri = assetUri(arrowImg);
+const crownUri = assetUri(crownImg);
+const viewsUri = assetUri(viewsIcon);
+const likesUri = assetUri(likesIcon);
+const sharesUri = assetUri(sharesIcon);
+const chipShapeUri = assetUri(chipShape);
+const heartUri = assetUri(heart);
+
+const copy = {
+  en: {
+    sections: [
+      "EXCLUSIVE CONTENT",
+      "TRENDING",
+      "JUST DROPPED",
+      "TOP PICKS",
+    ],
+    blogs: "BLOGS",
+    blogName: "BLOG NAME",
+    title: "THE TITLE",
+    type: "MANGA",
+    topLabel: "ONESHOT MANGA",
+    cta: "NEXT CHAPTER",
+    chapter: "CH.12",
+    metaDate: "Sat 15 . Oct",
+    author: "ART&STORY BY GONSO5/MANAH",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquam purus ex, eget rutrum massa feugiat et.",
+  },
+  ar: {
+    sections: [
+      "محتوى حصري",
+      "الأكثر رواجًا",
+      "أضيف حديثًا",
+      "اختياراتنا",
+    ],
+    blogs: "المدونة",
+    blogName: "اسم المقال",
+    title: "عنوان العمل",
+    type: "مانجا",
+    topLabel: "ون شوت مانجا",
+    cta: "الفصل التالي",
+    chapter: "فصل 12",
+    metaDate: "السبت 15 أكتوبر",
+    author: "القصة والرسم: GONSO5 / MANAH",
+    excerpt:
+      "هذا نص تجريبي مختصر لعرض شكل بطاقة المقال باللغة العربية داخل الواجهة.",
+  },
+};
+
+export default function App() {
+  const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [dragStates, setDragStates] = useState<Record<number, DragState>>({});
+  const [sections, setSections] = useState<SectionData[]>([]);
+  const [blogs, setBlogs] = useState<BlogItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [lang, setLang] = usePersistedLang("ar");
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = windowWidth <= 576;
+  const isArabic = lang === "ar";
+  const t = copy[lang];
+
+  useEffect(() => {
+    document.documentElement.dir = isArabic ? "rtl" : "ltr";
+    document.documentElement.lang = lang;
+  }, [isArabic, lang]);
+
+  const getCardStep = (index: number) => {
+    const container = scrollRefs.current[index];
+    if (!container) return 0;
+
+    const firstCard = container.querySelector(
+      ".manga-col, .blog-col"
+    ) as HTMLElement | null;
+    if (!firstCard) return 0;
+
+    const track = container.querySelector(
+      ".cards-track, .blogs-grid"
+    ) as HTMLElement | null;
+    const styles = track ? window.getComputedStyle(track) : null;
+    const gap = styles ? parseFloat(styles.gap || "0") : 0;
+    const cardWidth = firstCard.offsetWidth;
+
+    return cardWidth + gap;
+  };
+
+  const getVisibleCards = (index: number) => {
+    const row = document.querySelector(`.row-${index + 1}`) as HTMLElement | null;
+    if (!row) return 1;
+
+    const variableName = index === 4 ? "--blog-cols" : "--cols";
+    const rawCols = window.getComputedStyle(row).getPropertyValue(variableName).trim();
+    const cols = parseFloat(rawCols);
+
+    if (!Number.isFinite(cols) || cols <= 0) return 1;
+    return cols;
+  };
+
+  const getScrollAmount = (index: number) => {
+    const step = getCardStep(index);
+    return step * getVisibleCards(index);
+  };
+
+  const snapToNearestCard = (index: number) => {
+    const container = scrollRefs.current[index];
+    if (!container) return;
+
+    const step = getCardStep(index);
+    if (!step) return;
+
+    const snappedLeft = Math.round(container.scrollLeft / step) * step;
+    container.scrollTo({ left: snappedLeft, behavior: "smooth" });
+  };
+
+  const scrollLeftFn = (index: number) => {
+    const amount = getScrollAmount(index);
+    scrollRefs.current[index]?.scrollBy({ left: -amount, behavior: "smooth" });
+  };
+
+  const scrollRightFn = (index: number) => {
+    const amount = getScrollAmount(index);
+    scrollRefs.current[index]?.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
+  const handleMouseDown = (index: number, e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
+
+    const slider = scrollRefs.current[index];
+    if (!slider) return;
+
+    setDragStates((prev) => ({
+      ...prev,
+      [index]: {
+        isDown: true,
+        startX: e.pageX - slider.offsetLeft,
+        scrollLeft: slider.scrollLeft,
+      },
+    }));
+  };
+
+  const handleMouseLeave = (index: number) => {
+    const wasDragging = dragStates[index]?.isDown;
+
+    setDragStates((prev) => ({
+      ...prev,
+      [index]: {
+        ...(prev[index] || { startX: 0, scrollLeft: 0, isDown: false }),
+        isDown: false,
+      },
+    }));
+
+    if (wasDragging) {
+      snapToNearestCard(index);
+    }
+  };
+
+  const handleMouseUp = (index: number) => {
+    setDragStates((prev) => ({
+      ...prev,
+      [index]: {
+        ...(prev[index] || { startX: 0, scrollLeft: 0, isDown: false }),
+        isDown: false,
+      },
+    }));
+
+    snapToNearestCard(index);
+  };
+
+  const handleMouseMove = (index: number, e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
+
+    const slider = scrollRefs.current[index];
+    const state = dragStates[index];
+
+    if (!slider || !state?.isDown) return;
+
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - state.startX) * 1.5;
+    slider.scrollLeft = state.scrollLeft - walk;
+  };
+
+  const getMockData = () => {
+    const makeItems = (
+      startImage: number,
+      endImage: number,
+      totalCards = 12,
+      isRow1 = false
+    ): CardItem[] => {
+      const imageIds = Array.from(
+        { length: endImage - startImage + 1 },
+        (_, i) => startImage + i
+      );
+
+      return Array.from({ length: totalCards }, (_, i) => {
+        const imageId = imageIds[i % imageIds.length];
+
+        return {
+          id: `${lang}-${startImage}-${endImage}-${i}`,
+          image: homeImages[imageId],
+          title: t.title,
+          views: "33K",
+          likes: "10K",
+          comments: "800",
+          chapter: t.chapter,
+          type: t.type,
+          dropped: false,
+          topLabel: isRow1 ? t.topLabel : t.type,
+          ctaLabel: isRow1 ? t.cta : "Read More",
+          metaDate: isRow1 ? t.metaDate : "",
+          metaIcon: isRow1 ? crownUri : "",
+          author: isRow1 ? t.author : "",
+        };
+      });
+    };
+
+    const blogImageIds = [20, 21, 22];
+
+    return {
+      sections: [
+        {
+          name: t.sections[0],
+          variant: "featured" as CardVariant,
+          rowClass: "row-1",
+          items: makeItems(1, 4, 12, true),
+        },
+        {
+          name: t.sections[1],
+          variant: "standard" as CardVariant,
+          rowClass: "row-2",
+          items: makeItems(5, 9, 15),
+        },
+        {
+          name: t.sections[2],
+          variant: "chapter" as CardVariant,
+          rowClass: "row-3",
+          items: makeItems(10, 14, 15),
+        },
+        {
+          name: t.sections[3],
+          variant: "compactOverlay" as CardVariant,
+          rowClass: "row-4",
+          items: makeItems(15, 19, 15),
+        },
+      ],
+      blogs: Array.from({ length: 9 }, (_, i) => {
+        const imageId = blogImageIds[i % blogImageIds.length];
+
+        return {
+          id: `${lang}-${i}`,
+          image: homeImages[imageId],
+          title: t.blogName,
+          date: isArabic ? "٢٦ سبتمبر ٢٠٢٦" : "26 SEP 2026",
+          excerpt: t.excerpt,
+          category: isArabic ? "ركن المبدعين" : "Creator's Corner",
+        };
+      }),
+    };
+  };
+
+  useEffect(() => {
+    const fetchHomeData = async () => {
+      try {
+        const data = getMockData();
+        setSections(data.sections);
+        setBlogs(data.blogs);
+      } catch (error) {
+        console.error("Failed to fetch home data:", error);
+        const fallback = getMockData();
+        setSections(fallback.sections);
+        setBlogs(fallback.blogs);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHomeData();
+  }, [lang]);
+
+  if (loading) {
+    return (
+      <div
+        className={`home-page ${isArabic ? "lang-ar-page" : "lang-en-page"}`}
+        dir={isArabic ? "rtl" : "ltr"}
+      >
+        <div className="home-noise" />
+        <Header lang={lang} onLanguageChange={setLang} />
+        <main className="page-content px-3 px-md-4 px-xl-5 py-4 py-md-5">
+          <div className="text-white">{isArabic ? "جاري التحميل..." : "Loading..."}</div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={`home-page ${isArabic ? "lang-ar-page" : "lang-en-page"}`}
+      dir={isArabic ? "rtl" : "ltr"}
+    >
+      <div className="home-noise" />
+      <Header lang={lang} onLanguageChange={setLang} />
+
+      <main
+        className="page-content py-4 py-md-5"
+        style={{ backgroundImage: `url(${pageBgUri})` }}
+      >
+        {sections.map((section, index) => (
+          <SliderSection
+            key={`${lang}-${section.name}`}
+            index={index}
+            title={section.name}
+            rowClass={section.rowClass}
+            items={section.items}
+            variant={section.variant}
+            isMobile={isMobile}
+            chipImage={chipShapeUri}
+            arrowImage={arrowUri}
+            heartImage={heartUri}
+            viewsImage={viewsUri}
+            likesImage={likesUri}
+            sharesImage={sharesUri}
+            scrollRefs={scrollRefs}
+            dragStates={dragStates}
+            handleMouseDown={handleMouseDown}
+            handleMouseLeave={handleMouseLeave}
+            handleMouseUp={handleMouseUp}
+            handleMouseMove={handleMouseMove}
+            scrollLeftFn={scrollLeftFn}
+            scrollRightFn={scrollRightFn}
+          />
+        ))}
+
+        <section className="content-section row-5">
+<SectionHeader
+  title={t.blogs}
+  chipImage={chipShapeUri}
+  onSeeMore={() => console.log("See more blogs")}
+/>
+
+          <div className="slider-shell slider-row-5">
+            {!isMobile && (
+              <button
+                className="nav-arrow nav-arrow-left"
+                onClick={() => scrollLeftFn(4)}
+                onMouseDown={(e) => e.preventDefault()}
+                aria-label={isArabic ? "التمرير يسارًا" : "Scroll blogs left"}
+                type="button"
+              >
+                <img
+                  src={arrowUri}
+                  alt=""
+                  className="arrow-icon left"
+                  draggable={false}
+                />
+              </button>
+            )}
+
+            <div className="slider-viewport">
+              <div
+                className={`scroll-container ${
+                  dragStates[4]?.isDown ? "dragging" : ""
+                }`}
+                ref={(el) => {
+                  scrollRefs.current[4] = el;
+                }}
+                onMouseDown={(e) => handleMouseDown(4, e)}
+                onMouseLeave={() => handleMouseLeave(4)}
+                onMouseUp={() => handleMouseUp(4)}
+                onMouseMove={(e) => handleMouseMove(4, e)}
+              >
+                <div className="blogs-grid">
+                  {blogs.map((blog) => (
+                    <div className="blog-col" key={blog.id}>
+                      <BlogCard
+                        blog={blog}
+                        onReadMore={(selectedBlog) =>
+                          console.log("Read blog:", selectedBlog)
+                        }
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {!isMobile && (
+              <button
+                className="nav-arrow nav-arrow-right"
+                onClick={() => scrollRightFn(4)}
+                onMouseDown={(e) => e.preventDefault()}
+                aria-label={isArabic ? "التمرير يمينًا" : "Scroll blogs right"}
+                type="button"
+              >
+                <img
+                  src={arrowUri}
+                  alt=""
+                  className="arrow-icon right"
+                  draggable={false}
+                />
+              </button>
+            )}
+          </div>
+        </section>
+      </main>
+  <>
+            
+                                  <BackToTop />
+
+            </>
+      <Footer />
+    </div>
+  );
+}

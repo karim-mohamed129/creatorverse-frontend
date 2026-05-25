@@ -1,0 +1,10 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+	<defs>
+		<image  width="16" height="8" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAICAMAAADHqI+lAAAAAXNSR0IB2cksfwAAAGNQTFRFAAAA7+9A9e479e479O079u47//9A9OpA9e479e479e488/M99u869u869e879e479O869u0+9e479u479u039e089e479e479e079e889u869O869O88//8A9e479e479e486MDDZQAAACF0Uk5TABDR0I9sBBjU/9IVbozo3GEd29ccYt7mrattMC8C85eWPFpYqgAAAFJJREFUeJxjZAADRkbGf/8hLBZGxl8M7IyMQLGvDGxsjIx8v4EE43egHBeQ/szHKPGRARkIMPL8RREQZJR+hyIgzCjL+BqJL/qIkUH+FZKA+AMAHVUOfKkfLSEAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		.s0 { fill: #cc489a } 
+	</style>
+	<path fill-rule="evenodd" class="s0" d="m16 32c-8.85 0-16-7.15-16-16 0-8.85 7.15-16 16-16 8.85 0 16 7.15 16 16 0 8.85-7.15 16-16 16z"/>
+	<use id="Layer 1" href="#img1" x="8" y="12"/>
+</svg>

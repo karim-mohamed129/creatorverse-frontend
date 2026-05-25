@@ -1,0 +1,247 @@
+.categories-toolbar {
+  padding-top: 8px;
+  margin-bottom: 14px;
+  margin-left: 0%;
+}
+
+.categories-topbar {
+  display: grid;
+  grid-template-columns: 1fr 573px 1fr;
+  align-items: start;
+  column-gap: 0;
+}
+
+.categories-topbar-left {
+  min-height: 1px;
+}
+
+.categories-topbar-center {
+  display: flex;
+  justify-content: center;
+}
+
+.categories-topbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-bottom: 2px;
+  margin-top: 20px;
+}
+
+.sort-groups {
+  display: flex;
+  align-items: center;
+}
+
+/* =====================================================
+   CATEGORY SHAPE IMAGE
+   ===================================================== */
+.category-tabs-shape {
+  width: 100%;
+  min-width: 0;
+  max-width: 565px;
+  min-height: 55px;
+  margin-top: -11px;
+  position: relative;
+  left: 0;
+}
+
+.category-shape-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: fill;
+  transform: scaleY(-1); /* reversed */
+  transform-origin: center;
+  pointer-events: none;
+}
+
+/* =====================================================
+   CATEGORY TABS
+   ===================================================== */
+.category-tabs {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 16px 30px 10px;
+  width: 100%;
+  height: 55px;
+}
+
+.category-tab {
+  position: relative;
+  z-index: 1;
+  height: 34px;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.category-tab.active {
+  min-width: 108px;
+  padding: 0 20px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #5b5b5b 0%, #3e3e3e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    inset 0 -2px 0 rgba(57, 255, 210, 0.9),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* =====================================================
+   RTL OVERRIDES
+   ===================================================== */
+.categories-toolbar-rtl {
+  direction: rtl;
+}
+
+.categories-toolbar-rtl .categories-topbar-left {
+  justify-content: flex-end;
+}
+
+.categories-toolbar-rtl .categories-topbar-right {
+  justify-content: flex-start;
+}
+
+.categories-toolbar-rtl .sort-groups {
+  align-items: flex-start;
+}
+
+.categories-toolbar-rtl .category-tab,
+.categories-toolbar-rtl .sort-tab {
+  font-family: "NeoSansArabicLight", "Neotoxic", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  text-transform: none;
+}
+
+.categories-toolbar-rtl .sort-tab.active::before {
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+/* =====================================================
+   SORT TABS
+   ===================================================== */
+.sort-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.sort-tab {
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.sort-tab.active {
+  position: relative;
+  color: #cf4aa4;
+}
+
+.sort-tab.active::before {
+  content: "Ξ-1";
+  margin-right: 4px;
+  color: #cf4aa4;
+  font-size: 13px;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1199px) {
+  .categories-topbar {
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+  }
+  .categories-toolbar {
+    margin-left: 0%;
+  }
+
+  .categories-topbar-left {
+    display: none;
+  }
+
+  .categories-topbar-center,
+  .categories-topbar-right {
+    justify-content: center;
+  }
+
+  .sort-tabs {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .category-tabs-shape {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .categories-topbar-center {
+    justify-content: flex-start;
+  }
+
+  .category-tabs-shape {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    margin-top: 0;
+  }
+
+  .category-shape-bg {
+    display: none;
+  }
+
+  .category-tabs {
+    width: 100%;
+    min-height: auto;
+    gap: 12px;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .category-tab {
+    font-size: 14px;
+    height: 32px;
+  }
+
+  .category-tab.active {
+    min-width: 92px;
+    padding: 0 16px;
+  }
+
+  .sort-tabs {
+    gap: 12px;
+  }
+
+  .sort-tab {
+    font-size: 13px;
+  }
+}

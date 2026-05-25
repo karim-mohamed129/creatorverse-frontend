@@ -1,0 +1,14 @@
+.navbar {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: white !important;
+}
+
+.navbar .nav-link:hover {
+  color: #ffd700 !important;
+}

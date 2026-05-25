@@ -1,0 +1,604 @@
+/* =====================================================
+   SHARED SLIDER SYSTEM
+   ===================================================== */
+.slider-shell {
+  position: relative;
+}
+
+.slider-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.scroll-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 10px 0 5px;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  scroll-snap-type: x mandatory;
+  /* RTL FIX: Use logical padding */
+  padding-inline-start: 10px;
+  padding-inline-end: 0;
+}
+
+.scroll-container.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* =====================================================
+   TRACKS
+   ===================================================== */
+.cards-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--gap, 16px);
+  min-width: 100%;
+}
+
+.manga-col {
+  flex: 0 0
+    calc((100% - (var(--gap, 4px) * (var(--cols) - 1))) / var(--cols));
+  width:
+    calc((100% - (var(--gap, 4px) * (var(--cols) - 1))) / var(--cols));
+  max-width:
+    calc((100% - (var(--gap, 4px) * (var(--cols) - 1))) / var(--cols));
+  min-width:
+    calc((100% - (var(--gap, 4px) * (var(--cols) - 1))) / var(--cols));
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.blogs-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--gap, 4px);
+  min-width: 100%;
+}
+
+.blog-col {
+  flex: 0 0
+    calc((100% - (var(--gap, 4px) * (var(--blog-cols) - 1))) / var(--blog-cols));
+  width:
+    calc((100% - (var(--gap, 4px) * (var(--blog-cols) - 1))) / var(--blog-cols));
+  max-width:
+    calc((100% - (var(--gap, 4px) * (var(--blog-cols) - 1))) / var(--blog-cols));
+  min-width:
+    calc((100% - (var(--gap, 4px) * (var(--blog-cols) - 1))) / var(--blog-cols));
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* =====================================================
+   ROW WIDTH / GAP SYSTEM
+   ===================================================== */
+.row-1,
+.row-2,
+.row-3,
+.row-4,
+.row-5 {
+  --gap: 16px;
+}
+
+.row-5 {
+  --blog-cols: 3;
+}
+
+.row-1 {
+  --cols: 4;
+}
+
+.row-2,
+.row-3,
+.row-4 {
+  --cols: 5;
+}
+
+@media (min-width: 1400px) and (max-width: 1799px) {
+  .row-1 {
+    --cols: 4;
+    margin-top: -30px;
+  }
+
+  .row-2,
+  .row-3,
+  .row-4 {
+    --cols: 5;
+  }
+
+  .row-5 {
+    --blog-cols: 3;
+  }
+}
+
+@media (min-width: 1800px) {
+  .row-1 {
+    --cols: 4;
+  }
+
+  .row-2,
+  .row-3,
+  .row-4 {
+    --cols: 5;
+  }
+
+  .row-5 {
+    --blog-cols: 3;
+  }
+}
+
+/* =====================================================
+   ARROWS
+   ===================================================== */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  width: 39px;
+  height: 103px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-arrow-left {
+  /* RTL FIX: Use logical positioning */
+  inset-inline-start: -25px;
+}
+
+.nav-arrow-right {
+  /* RTL FIX: Use logical positioning */
+  inset-inline-end: -25px;
+}
+
+/* Logic for RTL Arrow Icons */
+[dir="rtl"] .nav-arrow-left .arrow-icon { transform: rotate(0deg); }
+[dir="rtl"] .nav-arrow-right .arrow-icon { transform: rotate(180deg); }
+
+.nav-arrow img,
+.arrow-icon {
+  width: 30px;
+  height: 103px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.2s ease;
+}
+
+.arrow-icon.left {
+  transform: rotate(180deg);
+}
+
+.nav-arrow:hover .arrow-icon.left {
+  transform: rotate(180deg) scale(1.08);
+}
+
+.nav-arrow:hover .arrow-icon.right {
+  transform: scale(1.08);
+}
+
+.nav-arrow:active .arrow-icon.left {
+  transform: rotate(180deg) scale(0.95);
+}
+
+.nav-arrow:active .arrow-icon.right {
+  transform: scale(0.95);
+}
+
+.nav-arrow:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 4px;
+}
+
+/* row-specific arrow tuning */
+.row-2 .nav-arrow,
+.row-3 .nav-arrow {
+  top: 48% !important;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1400px) {
+  .row-1,
+  .row-2,
+  .row-3,
+  .row-4 {
+    --cols: 4;
+  }
+
+  .row-5 {
+    --blog-cols: 2;
+  }
+}
+
+@media (max-width: 991px) {
+  .row-1,
+  .row-2,
+  .row-3,
+  .row-4,
+  .row-5 {
+    --gap: 8px;
+  }
+
+  .row-1,
+  .row-2,
+  .row-3,
+  .row-4 {
+    --cols: 2;
+  }
+
+  .row-5 {
+    --blog-cols: 1;
+  }
+
+  .nav-arrow {
+    display: none;
+  }
+
+  .scroll-container {
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .row-1,
+  .row-2,
+  .row-3,
+  .row-4,
+  .row-5 {
+    --gap: 8px;
+  }
+
+  .row-1 {
+    --cols: 2.37;
+  }
+
+  .row-2,
+  .row-3,
+  .row-4 {
+    --cols: 3.12;
+  }
+
+  .row-5 {
+    --blog-cols: 2;
+  }
+
+  [dir="rtl"] .row-1 .scroll-container,
+  [dir="rtl"] .row-2 .scroll-container,
+  [dir="rtl"] .row-3 .scroll-container,
+  [dir="rtl"] .row-4 .scroll-container,
+  [dir="rtl"] .row-5 .scroll-container {
+    padding-inline-start: 10px;
+    padding-inline-end: 0;
+  }
+
+  /* =========================================
+     CATEGORY VARIANT ONLY - MOBILE 3 COLUMNS
+     ========================================= */
+  .content-section-category .slider-viewport {
+    overflow: visible;
+  }
+
+  .content-section-category .scroll-container-category {
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+    cursor: default;
+    padding: 0;
+  }
+
+  .content-section-category .cards-track-category {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .content-section-category .manga-col-category {
+    flex: initial;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    scroll-snap-align: unset;
+  }
+
+  .content-section-category .nav-arrow {
+    display: none !important;
+  }
+
+  [dir="rtl"] .content-section-category .scroll-container-category {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* =====================================================
+   FIGMA ROW-1 EXACT FIXES - DESKTOP ARROWS + MOBILE WIDTHS
+   ===================================================== */
+.row-1.content-section,
+.row-1 .slider-shell,
+.row-1 .slider-viewport,
+.row-1 .scroll-container,
+.row-1 .cards-track {
+  direction: ltr !important;
+}
+
+.row-1 .nav-arrow-left {
+  display: none !important;
+}
+
+.row-1 .nav-arrow-right {
+  inset-inline-end: clamp(34px, 3.2vw, 46px) !important;
+}
+
+@media (max-width: 576px) {
+  .row-1 {
+    --gap: 6px !important;
+    --cols: unset !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .row-1 .slider-shell {
+    margin-top: 0 !important;
+  }
+
+  .row-1 .slider-viewport {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .row-1 .scroll-container {
+    padding-top: 4px !important;
+    padding-bottom: 0 !important;
+    padding-left: 38px !important;
+    padding-right: 0 !important;
+    scroll-padding-left: 38px !important;
+  }
+
+  .row-1 .cards-track {
+    gap: 6px !important;
+    min-width: max-content !important;
+    width: max-content !important;
+  }
+
+  .row-1 .manga-col {
+    flex: 0 0 148px !important;
+    width: 148px !important;
+    min-width: 148px !important;
+    max-width: 148px !important;
+  }
+
+  .row-1 .nav-arrow-left,
+  .row-1 .nav-arrow-right {
+    display: none !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .row-1 .scroll-container {
+    padding-left: 30px !important;
+    scroll-padding-left: 30px !important;
+  }
+}
+
+/* =====================================================
+   MANUAL CONTROL - ALL SECTIONS RIGHT ARROW
+   Keep this block at the end of the file.
+   ===================================================== */
+.content-section .nav-arrow-left {
+  display: none !important;
+}
+
+.content-section .nav-arrow-right {
+  inset-inline-end: auto !important;
+  inset-inline-start: auto !important;
+  right: -15px !important;
+  left: auto !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.content-section .arrow-icon.right {
+  width: 30px !important;
+  height: 103px !important;
+}
+
+
+/* =====================================================
+   FINAL API LAYOUT SAFETY
+   Keep Figma card columns even when API returns fewer/more items.
+   ===================================================== */
+.home-page .cards-track,
+.home-page .blogs-grid {
+  align-items: flex-start !important;
+}
+
+.home-page .row-1 { --cols: 4 !important; }
+.home-page .row-2,
+.home-page .row-3,
+.home-page .row-4 { --cols: 5 !important; }
+.home-page .row-5 { --blog-cols: 3 !important; }
+
+@media (max-width: 1400px) {
+  .home-page .row-1,
+  .home-page .row-2,
+  .home-page .row-3,
+  .home-page .row-4 { --cols: 4 !important; }
+  .home-page .row-5 { --blog-cols: 2 !important; }
+}
+
+@media (max-width: 991px) {
+  .home-page .row-1,
+  .home-page .row-2,
+  .home-page .row-3,
+  .home-page .row-4 { --cols: 2 !important; }
+  .home-page .row-5 { --blog-cols: 1 !important; }
+}
+
+/* =====================================================
+   FINAL MOBILE FIGMA CARD ORDER / WIDTH FIX
+   Keep all home sections as horizontal 3-card sliders on phones.
+   ===================================================== */
+@media (max-width: 576px) {
+  .home-page main.page-content {
+    padding-top: 12px !important;
+    padding-left: 16px !important;
+    padding-right: 0 !important;
+  }
+
+  .home-page .content-section {
+    margin-top: 8px !important;
+    margin-bottom: 12px !important;
+    overflow: hidden !important;
+  }
+
+  .home-page .row-1,
+  .home-page .row-2,
+  .home-page .row-3,
+  .home-page .row-4 {
+    --gap: 6px !important;
+    --cols: 3.15 !important;
+  }
+
+  .home-page .row-5 {
+    --gap: 8px !important;
+    --blog-cols: 2.06 !important;
+  }
+
+  .home-page .slider-shell,
+  .home-page .slider-viewport {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .home-page .scroll-container,
+  .home-page .row-1 .scroll-container,
+  .home-page .row-2 .scroll-container,
+  .home-page .row-3 .scroll-container,
+  .home-page .row-4 .scroll-container,
+  .home-page .row-5 .scroll-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding-top: 0 !important;
+    padding-bottom: 2px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+    scroll-padding-left: 0 !important;
+    scroll-snap-type: x mandatory !important;
+  }
+
+  .home-page .cards-track,
+  .home-page .blogs-grid,
+  .home-page .row-1 .cards-track,
+  .home-page .row-2 .cards-track,
+  .home-page .row-3 .cards-track,
+  .home-page .row-4 .cards-track,
+  .home-page .row-5 .blogs-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    gap: var(--gap) !important;
+    width: max-content !important;
+    min-width: max-content !important;
+  }
+
+  .home-page .row-1 .manga-col,
+  .home-page .row-2 .manga-col,
+  .home-page .row-3 .manga-col,
+  .home-page .row-4 .manga-col {
+    flex: 0 0 calc((100vw - 34px) / 3.15) !important;
+    width: calc((100vw - 34px) / 3.15) !important;
+    min-width: calc((100vw - 34px) / 3.15) !important;
+    max-width: calc((100vw - 34px) / 3.15) !important;
+    scroll-snap-align: start !important;
+  }
+
+  .home-page .row-5 .blog-col {
+    flex: 0 0 calc((100vw - 42px) / 2.06) !important;
+    width: calc((100vw - 42px) / 2.06) !important;
+    min-width: calc((100vw - 42px) / 2.06) !important;
+    max-width: calc((100vw - 42px) / 2.06) !important;
+    scroll-snap-align: start !important;
+  }
+
+  .home-page .nav-arrow {
+    display: none !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .home-page main.page-content {
+    padding-left: 14px !important;
+    padding-right: 0 !important;
+  }
+
+  .home-page .row-1 .manga-col,
+  .home-page .row-2 .manga-col,
+  .home-page .row-3 .manga-col,
+  .home-page .row-4 .manga-col {
+    flex-basis: calc((100vw - 30px) / 3.15) !important;
+    width: calc((100vw - 30px) / 3.15) !important;
+    min-width: calc((100vw - 30px) / 3.15) !important;
+    max-width: calc((100vw - 30px) / 3.15) !important;
+  }
+
+  .home-page .row-5 .blog-col {
+    flex-basis: calc((100vw - 38px) / 2.06) !important;
+    width: calc((100vw - 38px) / 2.06) !important;
+    min-width: calc((100vw - 38px) / 2.06) !important;
+    max-width: calc((100vw - 38px) / 2.06) !important;
+  }
+}
+
+
+/* =====================================================
+   ULTRA-WIDE SLIDER ALIGNMENT ONLY
+   Keeps every home section centered on very large screens only.
+   Manual arrow settings above remain unchanged.
+   ===================================================== */
+@media (min-width: 1800px) {
+  .home-page .slider-shell,
+  .home-page .slider-viewport,
+  .home-page .scroll-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .home-page .scroll-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+  }
+
+  .home-page .cards-track,
+  .home-page .blogs-grid {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .home-page .content-section .nav-arrow-right {
+    right: -15px !important;
+    left: auto !important;
+  }
+}

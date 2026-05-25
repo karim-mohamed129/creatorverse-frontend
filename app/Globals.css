@@ -1,0 +1,382 @@
+/* =====================================================
+   RESET / BASE
+   ===================================================== */
+:root {
+  --page-bg-uri: url("/images/background.png");
+}
+html,
+body,
+#root {
+  min-height: 100%;
+  min-height: 100dvh;
+  height: auto;
+  overflow-y:no-scroll!important;
+  background-color: #070707;
+  background-image: var(--page-bg-uri, url("/public/images/background.png")) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #070707;
+  background-image: var(--page-bg-uri, url("/public/images/background.png")) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+      height: auto;
+    min-height: 100%;}
+@media (max-width: 768px) {
+  body {
+   background-color: #070707;
+  background-image: var(--page-bg-uri, url("/public/images/background.png")) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  }
+}
+/* =====================================================
+   PAGE WRAPPER
+   ===================================================== */
+.home-page {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.home-noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  z-index: 0;
+}
+
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
+main.page-content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1920px);
+  margin-inline: auto;
+  padding-top: 32px;
+
+}
+.home-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--page-bg-uri, url("/public/images/background.png")) !important;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.blog-shell,
+.categories-shell,
+.creators-shell,
+.about-shell,
+.faq-shell,
+.subscriptions-shell,
+.remaining-shell,
+.shop-shell,
+.dashboard-shell,
+.login-shell,
+.signup-shell,
+.forgot-shell,.category-inner-content,.creator-profile-shell {
+  width: 100% !important;
+  max-width: 1270px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+    overflow-y:no-scroll!important;
+
+}
+.view-chapter-shell,.blog-inner-shell {
+  width: 100% !important;
+  max-width: 1270px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  
+}
+/* =====================================================
+   SECTIONS
+   ===================================================== */
+.content-section {
+  margin-bottom: 26px;
+}
+
+.section-head {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+/* =====================================================
+   LOAD MORE BUTTON
+   ===================================================== */
+.load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top:-10px!important;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.load-more-btn {
+  min-width: 390px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 8px;
+  background: #cf4aa4;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(207, 74, 164, 0.25);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.load-more-btn:hover {
+  opacity: 0.96;
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(207, 74, 164, 0.32);
+}
+
+.load-more-btn:active {
+  transform: translateY(0);
+}
+
+/* =====================================================
+   LANGUAGE TOGGLES
+   ===================================================== */
+.lang-ar {
+font-family: NeoSansArabicLight;
+font-weight: 900;
+font-style: Black;
+font-size: 16px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+vertical-align: middle;
+}
+.lang-en{
+font-family: Neotoxic;
+font-weight: 400;
+font-style: Regular;
+font-size: 12px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0%;
+vertical-align: middle;
+
+}
+
+
+/* =====================================================
+   GENERIC HELPERS
+   ===================================================== */
+.line-break {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.line-break-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (min-width: 1800px) {
+  main.page-content {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@media (min-width: 1200px) {
+  main.page-content {
+    width: min(calc(100% - 120px), 1260px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 1399px) {
+  main.page-content {
+    padding-left: 56px;
+    padding-right: 56px;
+  }
+}
+
+@media (max-width: 1200px) {
+  main.page-content {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 1025px) {
+  html,
+  body,
+  #root {
+    min-height: 100svh;
+    height: auto;
+  }
+ blog-shell,
+.categories-shell,
+.creators-shell,
+.about-shell,
+.faq-shell,
+.subscriptions-shell,
+.remaining-shell,
+.shop-shell,
+.dashboard-shell,
+.login-shell,
+.signup-shell,
+.forgot-shell
+  {
+  padding-left:10px;
+  padding-right:10px;
+  }
+
+  .home-page,
+  [class$="-page"] {
+    display: block !important;
+    flex-direction: initial !important;
+    min-height: 100dvh;
+  }
+}
+
+@media (max-width: 768px) {
+  main.page-content {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  main.page-content {
+    padding-top: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .content-section {
+    margin-bottom: 32px;
+  }
+
+  .section-head {
+    margin-bottom: 12px;
+  }
+
+  .load-more-btn {
+    min-width: 220px;
+    font-size: 14px;
+  }
+}
+
+.line-break {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
+}
+.dashboard-notification-pagination
+{
+padding-top:20px!important;    margin-bottom: 10px!important;
+}
+.manga-meta-category .manga-type
+{
+display:none}
+
+/* =========================================================
+   GLOBAL RTL FONT
+   ========================================================= */
+/* GLOBAL RTL FONT */
+html[dir="rtl"],
+body[dir="rtl"],
+[dir="rtl"] {
+  font-family: "NeoSansArabicLight", Arial, Helvetica, sans-serif !important;
+}
+
+[dir="rtl"] *,
+[dir="rtl"] *::before,
+[dir="rtl"] *::after {
+  font-family: "NeoSansArabicLight", Arial, Helvetica, sans-serif !important;
+}
+
+.category-tab {
+margin:0 auto;
+}
+
+/* Global RTL Arrow Reversal */
+[dir="rtl"] .see-more-arrow-mobile-2 {
+  transform: scaleX(-1) !important;
+}
+
+/* =====================================================
+   FIGMA HOME PAGE WIDTH OVERRIDES
+   ===================================================== */
+@media (min-width: 1200px) {
+  main.page-content {
+    width: min(calc(100% - 94px), 1348px);
+    max-width: 1348px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1799px) {
+  main.page-content {
+    width: min(calc(100% - 94px), 1348px);
+    max-width: 1348px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+/* =====================================================
+   ULTRA-WIDE HOME SECTIONS ALIGNMENT ONLY
+   Applies only on very large screens; no mobile/tablet/normal desktop changes.
+   ===================================================== */
+@media (min-width: 1800px) {
+  .home-page main.page-content {
+    width: min(calc(100% - 557px), 1348px) !important;
+    max-width: 1348px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .home-page .content-section {
+    width: 100% !important;
+    max-width: 1348px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

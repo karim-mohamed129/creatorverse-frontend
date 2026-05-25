@@ -1,0 +1,551 @@
+/* =====================================================
+   BLOG CARD - FIGMA EXACT DESKTOP
+   ===================================================== */
+.blog-card {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  max-height: 340px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #111111;
+}
+
+.blog-image-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.blog-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block;
+  border-radius: 3px;
+}
+
+.blog-overlay {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  min-height: 126px;
+  padding: 12px 13px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 3px;
+  background: rgba(29, 29, 29, 0.74);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  column-gap: 12px;
+  row-gap: 4px;
+}
+
+.blog-topline {
+  display: contents;
+}
+
+.blog-title {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  color: #18c9c0;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.blog-date {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  color: #cc4699;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.35px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.blog-excerpt {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  margin: 2px 0 0;
+  max-width: 96%;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 1.22;
+  letter-spacing: 0.1px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-read-more {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: end;
+  align-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 100;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.blog-read-more .see-more-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #ffffff !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: inherit !important;
+  font-style: italic !important;
+  font-weight: 100 !important;
+  line-height: 1 !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px !important;
+  text-transform: none !important;
+}
+
+.blog-read-chevrons {
+  color: #ffffff;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.blog-read-more:hover {
+  opacity: 0.85;
+}
+
+/* Keep the Figma English layout even inside RTL pages when lang is forced to en */
+.blog-card[dir="ltr"] .blog-overlay {
+  text-align: left;
+  direction: ltr;
+}
+
+.blog-card[dir="rtl"] .blog-overlay {
+  direction: rtl;
+  text-align: right;
+}
+
+.blog-card[dir="rtl"] .blog-title {
+  grid-column: 2;
+}
+
+.blog-card[dir="rtl"] .blog-date {
+  grid-column: 1;
+}
+
+.blog-card[dir="rtl"] .blog-read-more {
+  grid-column: 1;
+  justify-self: start;
+}
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+@media (max-width: 1025px) {
+  .blog-card {
+    height: 260px;
+    max-height: 260px;
+    border-radius: 3px;
+  }
+
+  .blog-image-wrap,
+  .blog-image {
+    border-radius: 3px;
+  }
+
+  .blog-overlay {
+    left: 9px;
+    right: 9px;
+    bottom: 9px;
+    min-height: 104px;
+    padding: 10px 11px 9px;
+  }
+
+  .blog-title {
+    font-size: 18px;
+  }
+
+  .blog-date {
+    font-size: 9px;
+  }
+
+  .blog-excerpt {
+    font-size: 12px;
+    line-height: 1.18;
+  }
+
+  .blog-read-more,
+  .blog-read-chevrons {
+    font-size: 15px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+@media (max-width: 576px) {
+  .blog-card {
+    height: 210px;
+    max-height: 210px;
+  }
+
+  .blog-overlay {
+    left: 7px;
+    right: 7px;
+    bottom: 7px;
+    min-height: 82px;
+    padding: 8px 9px 7px;
+    row-gap: 2px;
+  }
+
+  .blog-title {
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+
+  .blog-date {
+    font-size: 7px;
+  }
+
+  .blog-excerpt {
+    font-size: 9px;
+    line-height: 1.14;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .blog-read-more,
+  .blog-read-chevrons {
+    font-size: 12px;
+  }
+}
+
+/* =====================================================
+   FINAL FIX - NO CROPPING INSIDE BLOG CARDS
+   ===================================================== */
+.blog-image-wrap {
+  background: #111111 !important;
+}
+
+.blog-card .blog-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+/* =====================================================
+   FINAL FIX - REMOVE BLACK LETTERBOX BARS FROM BLOGS
+   Makes blog images fill the whole blog card without black top/bottom gaps.
+   ===================================================== */
+.blog-card,
+.blog-image-wrap {
+  background: transparent !important;
+}
+
+.blog-card .blog-image,
+.blog-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+
+/* =====================================================
+   FIGMA ICON - BLOG READ MORE
+   ===================================================== */
+.blog-read-more {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 5px !important;
+}
+
+.blog-read-more-icon {
+  width: 21px !important;
+  height: 9px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+  flex: 0 0 auto !important;
+  margin-top: 1px !important;
+}
+
+.blog-card.font-ar .blog-read-more-icon {
+  transform: scaleX(-1) !important;
+}
+
+
+/* =====================================================
+   FINAL FIX - BLOG READ MORE DOUBLE CHEVRON ICONS
+   ===================================================== */
+.blog-read-more {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 5px !important;
+}
+
+.blog-read-more-icons {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  flex: 0 0 auto !important;
+  line-height: 0 !important;
+  margin-top: 1px !important;
+}
+
+.blog-read-more-icons .blog-read-more-icon {
+  width: 9px !important;
+  height: 9px !important;
+  object-fit: contain !important;
+  display: block !important;
+  flex: 0 0 9px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.blog-card.font-ar .blog-read-more-icons {
+  transform: scaleX(-1) !important;
+}
+
+.blog-card.font-ar .blog-read-more-icons .blog-read-more-icon {
+  transform: none !important;
+}
+
+
+/* =====================================================
+   FINAL PIXEL FIX - READ MORE DOUBLE ICONS NO SPACE
+   Figma shows the two arrows touching each other with no gap.
+   ===================================================== */
+.read-more-icons,
+.blog-read-more-icons {
+  gap: 0 !important;
+  column-gap: 0 !important;
+  letter-spacing: -4px !important;
+}
+
+.read-more-icons .read-more-icon,
+.blog-read-more-icons .blog-read-more-icon {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.read-more-icons .read-more-icon + .read-more-icon,
+.blog-read-more-icons .blog-read-more-icon + .blog-read-more-icon {
+  margin-left: -2px !important;
+}
+
+[dir="rtl"] .read-more-icons .read-more-icon + .read-more-icon,
+.blog-card.font-ar .blog-read-more-icons .blog-read-more-icon + .blog-read-more-icon {
+  margin-left: 0 !important;
+  margin-right: -2px !important;
+}
+
+
+/* =====================================================
+   FINAL API + FIGMA BLOG LAYOUT RESTORE
+   Keep 3 blog cards exactly like Figma and stop dynamic titles/read-more overflow.
+   ===================================================== */
+.home-page .row-5 .blog-card {
+  width: 100% !important;
+  height: 340px !important;
+  max-height: 340px !important;
+  overflow: hidden !important;
+  border-radius: 3px !important;
+  background: transparent !important;
+}
+
+.home-page .row-5 .blog-image-wrap {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+.home-page .row-5 .blog-card .blog-image,
+.home-page .row-5 .blog-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+}
+
+.home-page .row-5 .blog-overlay {
+  left: 12px !important;
+  right: 12px !important;
+  bottom: 12px !important;
+  min-height: 126px !important;
+  max-width: calc(100% - 24px) !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  overflow: hidden !important;
+}
+
+.home-page .row-5 .blog-title {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.home-page .row-5 .blog-date {
+  max-width: 96px !important;
+  overflow: hidden !important;
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+}
+
+.home-page .row-5 .blog-excerpt {
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.home-page .row-5 .blog-read-more {
+  max-width: 150px !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+  justify-self: end !important;
+  align-self: end !important;
+}
+
+@media (max-width: 991px) {
+  .home-page .row-5 .blog-card {
+    height: 260px !important;
+    max-height: 260px !important;
+  }
+}
+
+/* =====================================================
+   FINAL MOBILE FIGMA BLOG CARDS
+   Two horizontal blog cards visible, compact overlay like Figma.
+   ===================================================== */
+@media (max-width: 576px) {
+  .home-page .row-5 .blog-card {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: 106 / 124 !important;
+    border-radius: 2px !important;
+    background: transparent !important;
+    overflow: hidden !important;
+  }
+
+  .home-page .row-5 .blog-image-wrap,
+  .home-page .row-5 .blog-image {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 2px !important;
+  }
+
+  .home-page .row-5 .blog-image {
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  .home-page .row-5 .blog-overlay {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    min-height: clamp(44px, 15vw, 72px) !important;
+    padding: clamp(4px, 1.8vw, 8px) clamp(4px, 1.8vw, 8px) clamp(3px, 1.4vw, 6px) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: rgba(29, 29, 29, 0.72) !important;
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    grid-template-rows: auto 1fr auto !important;
+    column-gap: 4px !important;
+    row-gap: 2px !important;
+  }
+
+  .home-page .row-5 .blog-title {
+    font-size: clamp(5.5px, 1.9vw, 9px) !important;
+    line-height: 1 !important;
+    letter-spacing: 0.1px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .home-page .row-5 .blog-date {
+    font-size: clamp(4px, 1.25vw, 6px) !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .home-page .row-5 .blog-excerpt {
+    font-size: clamp(4.8px, 1.55vw, 7.5px) !important;
+    line-height: 1.15 !important;
+    margin: 1px 0 0 !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+  }
+
+  .home-page .row-5 .blog-read-more,
+  .home-page .row-5 .blog-read-chevrons {
+    font-size: clamp(5px, 1.65vw, 8px) !important;
+    line-height: 1 !important;
+    gap: 1px !important;
+  }
+
+  .home-page .row-5 .blog-read-more .see-more-title {
+    margin: 0 !important;
+    text-underline-offset: 1px !important;
+  }
+
+  .home-page .row-5 .blog-read-more-icons .blog-read-more-icon {
+    width: clamp(3px, 1.15vw, 5px) !important;
+    height: clamp(3px, 1.15vw, 5px) !important;
+    flex-basis: clamp(3px, 1.15vw, 5px) !important;
+  }
+
+  .home-page .row-5 .blog-read-more-icons .blog-read-more-icon + .blog-read-more-icon {
+    margin-left: -1px !important;
+  }
+}

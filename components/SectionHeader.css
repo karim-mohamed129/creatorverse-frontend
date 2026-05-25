@@ -1,0 +1,416 @@
+/* =====================================================
+   SECTION HEADER
+   ===================================================== */
+.section-chip-svg {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+/* DESKTOP IMAGE */
+.chip-desktop {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* MOBILE IMAGE */
+.chip-mobile {
+  display: none;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* TITLE */
+.section-chip-svg > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46%;
+  text-align: center;
+  white-space: nowrap;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: clamp(14px, 2.5vw, 22px);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* BUTTON */
+.see-more-btn {
+  position: absolute;
+  right: 0%; /* was 0 */
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-style: italic;
+  font-size: clamp(12px, 1.6vw, 18px);
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  z-index: 3;
+}
+
+.see-more-btn:hover {
+  opacity: 0.9;
+}
+
+.see-more-title {
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 1);
+  text-transform: capitalize;
+  font-size: inherit;
+  line-height: 1;
+  margin-top:-10px;
+}
+
+.see-more-arrow-mobile {
+    object-fit: contain;
+    width: clamp(3px, 0.3vw, 4.186px) !important;
+    height: clamp(12px, 1.2vw, 18px) !important;
+    display: block;
+    margin-left: clamp(4px, 1vw, 16px);
+    flex: 0 0 auto;
+    opacity: 1;
+  
+  
+}
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+@media (max-width: 1200px) {
+  .section-chip-svg > span {
+    width: 70%;
+  }
+}
+
+@media (max-width: 992px) {
+  .section-chip-svg > span {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-chip-svg > span {
+    width: 70%;
+    font-size: clamp(12px, 3vw, 18px);
+  }
+}
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+@media (max-width: 1025px) {
+.see-more-btn {
+  right: 7%; /* was 0 */
+  
+}
+  .section-chip-svg {
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 4px;
+    min-height: 28px;
+    padding-left: 20px;
+  }
+
+  .chip-desktop {
+    display: none;
+  }
+
+  .chip-mobile {
+    display: block;
+    width: 100%;
+    height: 2px;
+    object-fit: contain;
+    opacity: 1;
+  }
+
+  .section-chip-svg > span {
+    position: static;
+    transform: none;
+    width: auto;
+    font-size: 15px;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .content-section {
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+  }
+
+  .see-more-btn {
+    position: static;
+    transform: none;
+    margin-right: 20px;
+    font-size: clamp(10px, 2.6vw, 12px);
+    white-space: nowrap;
+    gap: 4px;
+  }
+
+  .see-more-title {
+    font-size: inherit !important;
+  }
+
+  .see-more-arrow-mobile {
+    display: block;
+    width: clamp(3px, 0.5vw, 4.186px) !important;
+    height: clamp(12px, 2.2vw, 18px) !important;
+    margin-left: 4px;
+  }
+
+  [dir="rtl"] .section-chip-svg {
+    grid-template-columns: auto 1fr auto;
+    padding-left: 0;
+    padding-right: 20px;
+  }
+
+  [dir="rtl"] .section-chip-svg > span {
+    text-align: right;
+  }
+
+  [dir="rtl"] .see-more-btn {
+    margin-right: 0;
+    margin-left: 40px;
+  }
+}
+
+/* RTL fixes for index section titles/chips */
+.section-chip-rtl {
+  direction: rtl;
+}
+
+.section-chip-rtl > span {
+  direction: rtl;
+  text-align: center;
+  font-family: "NeoSansArabicLight", "Neotoxic", Arial, Helvetica, sans-serif;
+  text-transform: none;
+}
+
+.section-chip-rtl .see-more-btn {
+  left: 0;
+  right: auto;
+  direction: rtl;
+  font-family: "NeoSansArabicLight", "Neotoxic", Arial, Helvetica, sans-serif;
+  font-style: normal;
+}
+
+.section-chip-rtl .see-more-arrow-mobile {
+  margin-left: 0;
+  margin-right: clamp(4px, 1vw, 16px);
+  transform: scaleX(-1);
+}
+
+@media (max-width: 1025px) {
+  .section-chip-rtl {
+    direction: rtl;
+    padding-left: 0;
+    padding-right: 20px;
+  }
+
+  .section-chip-rtl > span {
+    text-align: right;
+    order: 1;
+  }
+
+  .section-chip-rtl .chip-mobile {
+    order: 2;
+  }
+
+  .section-chip-rtl .see-more-btn {
+    order: 3;
+    margin-left: 20px;
+    margin-right: 0;
+  }
+
+  .section-chip-rtl .see-more-arrow-mobile {
+    margin-left: 0;
+    margin-right: 4px;
+  }
+}
+
+.see-more-title,.see-more-btn {
+  margin-top:-10px;
+}
+/* =====================================================
+   FIGMA EXACT - ROW 2 SECTION HEADER
+   ===================================================== */
+.row-2 .section-chip-svg > span {
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 22px !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+}
+
+.row-2 .see-more-btn {
+  right: 0 !important;
+  top: 50% !important;
+  font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+  font-size: 18px !important;
+  font-style: italic !important;
+}
+
+.row-2 .see-more-title {
+  margin-top: -8px !important;
+  text-transform: capitalize !important;
+}
+
+@media (max-width: 1025px) {
+  .row-2 .section-chip-svg > span {
+    font-size: 15px !important;
+  }
+}
+
+
+/* =====================================================
+   FIGMA ICON - SEE MORE
+   ===================================================== */
+.see-more-btn {
+  gap: 7px !important;
+}
+
+.see-more-arrow-mobile {
+  width: 18px !important;
+  height: 18px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin-left: 4px !important;
+}
+
+.section-chip-rtl .see-more-arrow-mobile {
+  margin-left: 0 !important;
+  margin-right: 4px !important;
+  transform: scaleX(-1) !important;
+}
+
+@media (max-width: 1025px) {
+  .see-more-arrow-mobile {
+    width: 14px !important;
+    height: 14px !important;
+    margin-left: 3px !important;
+  }
+}
+
+/* =====================================================
+   FINAL MOBILE FIGMA SECTION HEADER
+   Small left title + thin middle line + See More on the right.
+   ===================================================== */
+@media (max-width: 576px) {
+  .home-page .section-head {
+    margin-bottom: 6px !important;
+  }
+
+  .home-page .section-chip-svg {
+    min-height: 12px !important;
+    padding-left: 0 !important;
+    padding-right: 14px !important;
+    display: grid !important;
+    grid-template-columns: auto minmax(16px, 1fr) auto !important;
+    align-items: center !important;
+    column-gap: 4px !important;
+  }
+
+  .home-page .section-chip-svg > span {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    max-width: none !important;
+    font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+    font-size: clamp(7px, 2.2vw, 10px) !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    text-align: left !important;
+    letter-spacing: 0 !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+  }
+
+  .home-page .chip-desktop {
+    display: none !important;
+  }
+
+  .home-page .chip-mobile {
+    display: block !important;
+    width: 100% !important;
+    height: 1px !important;
+    min-width: 0 !important;
+    object-fit: fill !important;
+    opacity: 0.55 !important;
+  }
+
+  .home-page .see-more-btn,
+  .home-page .row-2 .see-more-btn {
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 2px !important;
+    font-family: "Neotoxic", Arial, Helvetica, sans-serif !important;
+    font-size: clamp(5.5px, 1.75vw, 8px) !important;
+    font-style: italic !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .home-page .see-more-title,
+  .home-page .row-2 .see-more-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: inherit !important;
+    line-height: 1 !important;
+    text-underline-offset: 1px !important;
+  }
+
+  .home-page .see-more-arrow-mobile {
+    width: clamp(4px, 1.3vw, 6px) !important;
+    height: clamp(4px, 1.3vw, 6px) !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+  }
+
+  .home-page .section-chip-rtl {
+    padding-left: 14px !important;
+    padding-right: 0 !important;
+  }
+
+  .home-page .section-chip-rtl > span {
+    text-align: right !important;
+  }
+
+  .home-page .section-chip-rtl .see-more-btn {
+    margin: 0 !important;
+  }
+}
