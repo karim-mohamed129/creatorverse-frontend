@@ -13,6 +13,7 @@ const forceEnglishScript = `
     ['site_lang', 'siteLang', 'appLang', 'language', 'locale', 'lang', 'i18nextLng'].forEach(function (key) {
       localStorage.setItem(key, 'en');
     });
+    localStorage.removeItem('site_lang_manual');
   } catch (e) {}
 })();
 `;
@@ -21,6 +22,14 @@ const firstPaintCss = `
 html, body, #root {
   direction: ltr !important;
   text-align: left;
+}
+
+html:not([data-app-lang-ready="true"]) body {
+  opacity: 0;
+}
+
+html[data-app-lang-ready="true"] body {
+  opacity: 1;
 }
 
 html {

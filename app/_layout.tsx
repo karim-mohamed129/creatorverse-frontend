@@ -6,7 +6,7 @@ import {
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { Platform } from "react-native";
 import "react-native-reanimated";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -27,10 +27,17 @@ function forceEnglishBeforePaint() {
       ["site_lang", "siteLang", "appLang", "language", "locale", "lang", "i18nextLng"].forEach((key) => {
         window.localStorage.setItem(key, "en");
       });
+      window.localStorage.removeItem("site_lang_manual");
     } catch {
       // Ignore storage errors in private mode or restricted browsers.
     }
   }
+}
+
+
+function markLanguageReadyForPaint() {
+  if (typeof document === "undefined") return;
+  document.documentElement.setAttribute("data-app-lang-ready", "true");
 }
 
 if (Platform.OS === "web") {
@@ -44,9 +51,17 @@ export default function RootLayout() {
     Neotoxic: require("../assets/fonts/Neotoxic-Regular.ttf"),
   });
 
+  useLayoutEffect(() => {
+    if (Platform.OS === "web") {
+      forceEnglishBeforePaint();
+      markLanguageReadyForPaint();
+    }
+  }, []);
+
   useEffect(() => {
     if (Platform.OS === "web") {
       forceEnglishBeforePaint();
+      markLanguageReadyForPaint();
     }
   }, []);
 
