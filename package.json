@@ -11,6 +11,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build": "expo export --platform web",
+    "vercel-build": "npm run build",
     "preview": "npx serve dist",
     "lint": "expo lint"
   },
