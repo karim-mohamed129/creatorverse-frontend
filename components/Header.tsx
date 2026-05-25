@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
 import "../app/Globals.css";
 
@@ -44,6 +43,7 @@ export type HeaderPage =
   | "home"
   | "categories"
   | "creators"
+  | "blog"
   | "shop"
   | "subscription";
 
@@ -131,7 +131,7 @@ const translations = {
 };
 
 export default function Header({
-  lang = "ar",
+  lang = "en",
   onLanguageChange,
   currentPage = "home",
 }: HeaderProps) {

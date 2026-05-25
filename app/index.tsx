@@ -7,7 +7,6 @@ import SliderSection from "../components/SliderSection";
 import BlogCard, { BlogItem } from "../components/BlogCard";
 import { CardItem, CardVariant } from "../components/MangaCard";
 import { usePersistedLang } from "../components/usePersistedLang";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./Globals.css";
 
 import arrowImg from "../assets/images/arrow.png";
@@ -235,13 +234,15 @@ export default function App() {
   const [windowWidth, setWindowWidth] = useState<number>(
     typeof window !== "undefined" ? window.innerWidth : 1440
   );
+  const [showDeferredHome, setShowDeferredHome] = useState(false);
 
-  const [lang, setLang] = usePersistedLang("ar");
+  const [lang, setLang] = usePersistedLang("en");
 
   const isMobile = windowWidth <= 991;
   const isArabic = lang === "ar";
   const pageDir = isArabic ? "rtl" : "ltr";
   const sections = buildStaticSections();
+  const visibleSections = showDeferredHome ? sections : sections.slice(0, 1);
   const blogs = staticBlogs;
 
   useEffect(() => {
@@ -251,6 +252,35 @@ export default function App() {
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let timeoutId = 0;
+    let idleId: number | undefined;
+    const rafId = window.requestAnimationFrame(() => {
+      const requestIdle = (window as any).requestIdleCallback as
+        | ((callback: () => void, options?: { timeout: number }) => number)
+        | undefined;
+
+      if (requestIdle) {
+        idleId = requestIdle(() => setShowDeferredHome(true), { timeout: 700 });
+      } else {
+        timeoutId = window.setTimeout(() => setShowDeferredHome(true), 120);
+      }
+    });
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      if (timeoutId) window.clearTimeout(timeoutId);
+      if (idleId !== undefined) {
+        const cancelIdle = (window as any).cancelIdleCallback as
+          | ((handle: number) => void)
+          | undefined;
+        cancelIdle?.(idleId);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -447,7 +477,7 @@ export default function App() {
         className="page-content py-4 py-md-5"
         dir={pageDir}
       >
-        {sections.map((section, index) => (
+        {visibleSections.map((section, index) => (
           <SliderSection
             key={`${lang}-${section.name}`}
             index={index}
@@ -477,6 +507,7 @@ export default function App() {
           />
         ))}
 
+        {showDeferredHome && (
         <section className="content-section row-5" dir={pageDir}>
           <SectionHeader
             title="BLOGS"
@@ -552,6 +583,7 @@ export default function App() {
             )}
           </div>
         </section>
+        )}
       </main>
 
       <BackToTop />

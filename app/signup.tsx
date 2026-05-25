@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./Signup.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -98,7 +97,7 @@ const copy = {
 };
 
 export default function SignUpPage() {
-  const [lang, setLang] = usePersistedLang("ar");
+  const [lang, setLang] = usePersistedLang("en");
 
   const [form, setForm] = useState<FormState>({
     firstName: "",

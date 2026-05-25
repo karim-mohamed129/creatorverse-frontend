@@ -64,6 +64,7 @@ type MangaCardProps = {
   onToggleFavorite?: (item: CardItem) => void;
   style?: React.CSSProperties;
   lang?: string;
+  priority?: boolean;
 };
 
 function StatsOverlay({
@@ -115,6 +116,7 @@ export default function MangaCard({
   onToggleFavorite,
   style,
   lang = "en",
+  priority = false,
 }: MangaCardProps) {
   // Initialize from localStorage if available, otherwise use initialIsFavorite prop
   const [isFavorite, setIsFavorite] = useState(() => {
@@ -198,7 +200,9 @@ export default function MangaCard({
             src={item.image}
             alt={item.title}
             className="manga-cover"
-            loading="lazy"
+            loading={priority ? "eager" : "lazy"}
+            decoding="async"
+            fetchPriority={priority ? "high" : "auto"}
             draggable={false}
           />
         )}

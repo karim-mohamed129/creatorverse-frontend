@@ -76,7 +76,7 @@ const copy = {
 };
 
 export default function LoginPage() {
-  const [lang, setLang] = usePersistedLang("ar");
+  const [lang, setLang] = usePersistedLang("en");
   const [form, setForm] = useState<LoginFormState>({ email: "", password: "" });
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [serverError, setServerError] = useState("");

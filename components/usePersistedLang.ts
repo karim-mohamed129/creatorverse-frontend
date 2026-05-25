@@ -2,9 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import type { Lang } from "./Header";
 
 const STORAGE_KEY = "site_lang";
-const LEGACY_STORAGE_KEYS = ["siteLang", "appLang", "lang", "i18nextLng"];
+const LEGACY_STORAGE_KEYS = ["siteLang", "appLang", "language", "locale", "lang", "i18nextLng"];
 const LANG_CHANGE_EVENT = "error505-language-change";
-const DEFAULT_LANG: Lang = "ar";
+const DEFAULT_LANG: Lang = "en";
 
 function isLang(value: unknown): value is Lang {
   return value === "ar" || value === "en";

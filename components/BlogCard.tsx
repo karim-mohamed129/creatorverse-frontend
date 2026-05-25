@@ -46,6 +46,7 @@ const BlogCard = ({ blog, onReadMore, lang = "en" }: BlogCardProps) => {
           alt={blog.title}
           className="blog-image"
           loading="lazy"
+          decoding="async"
           draggable={false}
         />
       </div>

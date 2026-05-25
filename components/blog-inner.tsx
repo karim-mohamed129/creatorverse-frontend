@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./Globals.css";
 import "./BlogInner.css";
@@ -372,7 +371,7 @@ function RelatedBlogCard({
 }
 
 export default function BlogInnerPage() {
-  const [lang, setLang] = usePersistedLang("ar");
+  const [lang, setLang] = usePersistedLang("en");
   const isArabic = lang === "ar";
   const t = blogInnerCopy[lang];
   const pageDir = isArabic ? "rtl" : "ltr";

@@ -133,6 +133,7 @@ export default function SliderSection({
                     likesImage={likesImage}
                     sharesImage={sharesImage}
                     onToggleFavorite={onToggleFavorite}
+                    priority={index === 0 && itemIndex === 0}
                     lang={lang}
                   />
                 </div>

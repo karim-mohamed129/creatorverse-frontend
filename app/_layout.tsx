@@ -9,6 +9,7 @@ import { useFonts } from "expo-font";
 import { useEffect } from "react";
 import { Platform } from "react-native";
 import "react-native-reanimated";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useColorScheme } from "@/hooks/use-color-scheme";
 
@@ -23,10 +24,9 @@ function forceEnglishBeforePaint() {
 
   if (typeof window !== "undefined") {
     try {
-      window.localStorage.setItem("language", "en");
-      window.localStorage.setItem("lang", "en");
-      window.localStorage.setItem("locale", "en");
-      window.localStorage.setItem("i18nextLng", "en");
+      ["site_lang", "siteLang", "appLang", "language", "locale", "lang", "i18nextLng"].forEach((key) => {
+        window.localStorage.setItem(key, "en");
+      });
     } catch {
       // Ignore storage errors in private mode or restricted browsers.
     }

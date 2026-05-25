@@ -58,7 +58,7 @@ const assetSrc = (asset: any): string => {
   return "";
 };
 
-export default function Footer({ lang = "ar" }: FooterProps) {
+export default function Footer({ lang = "en" }: FooterProps) {
   const logoUri = assetSrc(logoImg);
   const googlePlayUri = assetSrc(googlePlayImg);
   const appleStoreUri = assetSrc(appleStoreImg);

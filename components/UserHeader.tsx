@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./UserHeader.css";
 
 import headerBg from "../assets/images/header.png";
@@ -19,6 +18,7 @@ export type UserHeaderPage =
   | "home"
   | "categories"
   | "creators"
+  | "blog"
   | "shop"
   | "subscription";
 
@@ -56,7 +56,7 @@ const translations = {
 };
 
 export default function UserHeader({
-  lang = "ar",
+  lang = "en",
   onLanguageChange,
   currentPage = "none",
   userName,
@@ -86,7 +86,9 @@ export default function UserHeader({
 
     const syncCart = () => {
       const cart = readLocalCart();
-      setCartCount(cart.reduce((s, i) => s + i.quantity, 0));
+      setCartCount(
+        cart.reduce((sum: number, item: { quantity?: number }) => sum + Number(item.quantity || 0), 0)
+      );
     };
     syncCart();
     window.addEventListener(CART_CHANGE_EVENT, syncCart);
